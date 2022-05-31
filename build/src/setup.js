@@ -26,13 +26,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const test_1 = require("./GameWorld/test");
-const Player_1 = __importDefault(require("./std/Player"));
 const FOCUS = __importStar(require("./tools/Focus"));
 const MainMenu_1 = __importDefault(require("./views/MainMenu"));
-const player = new Player_1.default();
-player.Room = test_1.testArea.loc1;
 FOCUS.ChangeView(new MainMenu_1.default());
 window.addEventListener('keydown', (event) => {
     FOCUS.keyListener(event);
 });
+//const player = new Player()
+//player.Room = testArea.loc1
