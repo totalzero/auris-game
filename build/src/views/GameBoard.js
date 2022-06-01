@@ -23,14 +23,13 @@ class GameBoard extends BaseView_1.default {
     }
     cursorUp() {
         var _a;
-        if (this._cursor.y < this._location.Floors.length) {
+        if (this._cursor.y <= 1) {
             this._cursor.y += 1;
             this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);
             this.cursor();
         }
         else {
             this.say("tam nie ma nic");
-            this._cursor.y--;
         }
     }
     cursorDown() {
@@ -42,7 +41,6 @@ class GameBoard extends BaseView_1.default {
         }
         else {
             this.say("tam nie ma nic");
-            this._cursor.y++;
         }
     }
     cursorLeft() {
@@ -54,19 +52,17 @@ class GameBoard extends BaseView_1.default {
         }
         else {
             this.say("tam nie ma nic");
-            this._cursor.x++;
         }
     }
     cursorRight() {
         var _a;
-        if (this._cursor.x < this._location.Floors[this._cursor.y].length) {
+        if (this._cursor.x <= 1) {
             this._cursor.x += 1;
             this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);
             this.cursor();
         }
         else {
             this.say("tam nic nie ma");
-            this._cursor.x--;
         }
     }
     cursorTab() {

@@ -7,6 +7,7 @@ class BaseContextMenu extends BaseMenu_1.BaseMenu {
         super();
         this._previousView = view;
         this._obj = obj;
+        this.say("menu obiektu");
     }
     Keyboard(key) {
         switch (key.key) {
@@ -23,6 +24,7 @@ class BaseContextMenu extends BaseMenu_1.BaseMenu {
         this.backToPreviousView();
     }
     backToPreviousView() {
+        this.say("zamykam menu");
         (0, Focus_1.ChangeView)(this._previousView);
     }
 }

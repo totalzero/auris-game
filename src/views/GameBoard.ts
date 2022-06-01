@@ -28,13 +28,12 @@ this._objIter = new Iterator(this._objects)
 }
 
 private cursorUp() {
-    if (this._cursor.y < this._location!.Floors.length) {
+    if (this._cursor.y <= 1) {
 this._cursor.y += 1
 this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
 this.cursor()
     } else {
 this.say("tam nie ma nic")
-this._cursor.y -- 
     }
 }
 
@@ -45,8 +44,7 @@ private cursorDown() {
     this.cursor()
     } else {
 this.say("tam nie ma nic")
-this._cursor.y ++
-    }
+}
     }
 
 private cursorLeft() {
@@ -55,20 +53,18 @@ private cursorLeft() {
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
     } else {
-        this.say("tam nie ma nic")
-        this._cursor.x ++
-    }
+        this.say("tam nie ma nic")        
+}
 }
 
 private cursorRight() {
-    if (this._cursor.x < this._location!.Floors[this._cursor.y].length) {
+    if (this._cursor.x <= 1) {
     this._cursor.x += 1
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
     } else {
 this.say("tam nic nie ma")
-this._cursor.x --
-    }
+}
     }
 
 private cursorTab() {

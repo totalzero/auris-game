@@ -11,6 +11,7 @@ protected _obj: GameObj
      super()
      this._previousView = view
      this._obj = obj
+     this.say("menu obiektu")
  }
 
 Keyboard(key: KeyboardEvent): void {
@@ -31,6 +32,7 @@ protected _run(): void {
 }
 
  protected backToPreviousView() {
+     this.say("zamykam menu")
      ChangeView(this._previousView)
  }
 
