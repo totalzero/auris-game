@@ -1,14 +1,14 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.testArea = void 0;
-const Loc1_1 = __importDefault(require("./Loc1"));
-const Loc2_1 = __importDefault(require("./Loc2"));
-const loc1 = (0, Loc1_1.default)();
-const loc2 = (0, Loc2_1.default)();
+const loc1_1 = require("./loc1");
+const item1_1 = require("./item1");
 exports.testArea = {
-    loc1,
-    loc2,
+    Locations: {
+        Loc1: loc1_1.Loc1,
+    },
+    Npcs: {},
+    Items: {
+        Item1: item1_1.Item1,
+    }
 };

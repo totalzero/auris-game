@@ -28,28 +28,47 @@ this._objIter = new Iterator(this._objects)
 }
 
 private cursorUp() {
+    if (this._cursor.y < this._location!.Floors.length) {
 this._cursor.y += 1
 this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
 this.cursor()
+    } else {
+this.say("tam nie ma nic")
+this._cursor.y -- 
+    }
 }
 
 private cursorDown() {
+    if (this._cursor.y > 0) {
     this._cursor.y -= 1
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
+    } else {
+this.say("tam nie ma nic")
+this._cursor.y ++
+    }
     }
 
 private cursorLeft() {
+    if (this._cursor.x > 0) {
     this._cursor.x -= 1
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
-    
+    } else {
+        this.say("tam nie ma nic")
+        this._cursor.x ++
+    }
 }
 
 private cursorRight() {
+    if (this._cursor.x < this._location!.Floors[this._cursor.y].length) {
     this._cursor.x += 1
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
+    } else {
+this.say("tam nic nie ma")
+this._cursor.x --
+    }
     }
 
 private cursorTab() {
@@ -115,10 +134,15 @@ this.cursorTab()
 private _collectionSummary(): string {
 let summary = ''
 if (this._objects != undefined){
-if (this._objects.length > 0)
+if (this._objects.length > 0) {
 summary = `
 ${this._location?.getFloor(this._cursor.x, this._cursor.y)}.
 Obiekty: ${this._objects.length}`
+} else {
+    summary = `
+    ${this._location?.getFloor(this._cursor.x, this._cursor.y)}.
+`    
+}
 }
 
 return summary

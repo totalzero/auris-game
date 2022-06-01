@@ -10,23 +10,33 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./build/src/GameWorld/test/Loc1.js":
-/*!******************************************!*\
-  !*** ./build/src/GameWorld/test/Loc1.js ***!
-  \******************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst Room_1 = __importDefault(__webpack_require__(/*! ../../obj/Room */ \"./build/src/obj/Room.js\"));\nfunction Loc1() {\n    const l = new Room_1.default();\n    l.Description = \"to jest zwykla lokacja testowa, nie spodziewaj sie niewiadomo co\";\n    l.Name = \"lokacja testowa\";\n    return l;\n}\nexports[\"default\"] = Loc1;\n\n\n//# sourceURL=webpack://auris/./build/src/GameWorld/test/Loc1.js?");
-
-/***/ }),
-
 /***/ "./build/src/GameWorld/test/index.js":
 /*!*******************************************!*\
   !*** ./build/src/GameWorld/test/index.js ***!
   \*******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.testArea = void 0;\nconst loc1_1 = __webpack_require__(/*! ./loc1 */ \"./build/src/GameWorld/test/loc1.js\");\nconst item1_1 = __webpack_require__(/*! ./item1 */ \"./build/src/GameWorld/test/item1.js\");\nexports.testArea = {\n    Locations: {\n        Loc1: loc1_1.Loc1,\n    },\n    Npcs: {},\n    Items: {\n        Item1: item1_1.Item1,\n    }\n};\n\n\n//# sourceURL=webpack://auris/./build/src/GameWorld/test/index.js?");
+
+/***/ }),
+
+/***/ "./build/src/GameWorld/test/item1.js":
+/*!*******************************************!*\
+  !*** ./build/src/GameWorld/test/item1.js ***!
+  \*******************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.testArea = void 0;\nconst Loc1_1 = __importDefault(__webpack_require__(/*! ./Loc1 */ \"./build/src/GameWorld/test/Loc1.js\"));\nconst loc1 = (0, Loc1_1.default)();\nexports.testArea = {\n    loc1\n};\n\n\n//# sourceURL=webpack://auris/./build/src/GameWorld/test/index.js?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Item1 = void 0;\nconst Item_1 = __importDefault(__webpack_require__(/*! ../../obj/Item */ \"./build/src/obj/Item.js\"));\nfunction item1() {\n    const i = new Item_1.default();\n    i.Name = \"jakis tam przedmiot\";\n    i.Description = \"to jest opis tego przedmiotu\";\n    i.X = 1;\n    return i;\n}\nexports.Item1 = item1();\n\n\n//# sourceURL=webpack://auris/./build/src/GameWorld/test/item1.js?");
+
+/***/ }),
+
+/***/ "./build/src/GameWorld/test/loc1.js":
+/*!******************************************!*\
+  !*** ./build/src/GameWorld/test/loc1.js ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.Loc1 = void 0;\nconst Floors_1 = __webpack_require__(/*! ../../obj/Floors */ \"./build/src/obj/Floors.js\");\nconst Room_1 = __importDefault(__webpack_require__(/*! ../../obj/Room */ \"./build/src/obj/Room.js\"));\nconst item1_1 = __webpack_require__(/*! ./item1 */ \"./build/src/GameWorld/test/item1.js\");\nfunction loc1() {\n    const l = new Room_1.default();\n    l.Name = \"lokacja testowa numer 1\";\n    l.Description = \"to jest po prostu lokacja testowa, wiec nie spodziewaj sie niczego niezwyklego\";\n    l.Floors = [\n        [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass],\n        [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass],\n        [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass]\n    ];\n    l.AddObject(item1_1.Item1);\n    return l;\n}\nexports.Loc1 = loc1();\n\n\n//# sourceURL=webpack://auris/./build/src/GameWorld/test/loc1.js?");
 
 /***/ }),
 
@@ -47,6 +57,16 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
 /***/ ((__unused_webpack_module, exports) => {
 
 eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nclass GameObj {\n    constructor() {\n        this._name = \"\";\n        this._desc = \"\";\n        this._x = 0;\n        this._y = 0;\n        this._ofens = 0;\n        this._defens = 0;\n        this._level = 0;\n        this._respawn = true;\n        this._use = undefined;\n        this._canPickup = false;\n    }\n    get Name() {\n        return this._name;\n    }\n    set Name(name) {\n        this._name = name;\n    }\n    get Description() {\n        return this._desc;\n    }\n    set Description(desc) {\n        this._desc = desc;\n    }\n    get X() {\n        return this._x;\n    }\n    set X(x) {\n        this._x = x;\n    }\n    get Y() {\n        return this._y;\n    }\n    set Y(y) {\n        this._y = y;\n    }\n    get Offensive() {\n        return this._ofens;\n    }\n    set Offensive(ofens) {\n        this._ofens = ofens;\n    }\n    get Defensive() {\n        return this._defens;\n    }\n    set Defensive(def) {\n        this._defens = def;\n    }\n    get Level() {\n        return this._level;\n    }\n    set Level(level) {\n        this._level = level;\n    }\n    get isRespawn() {\n        return this._respawn;\n    }\n    set Respawn(res) {\n        this._respawn = res;\n    }\n    getInfo() {\n        return 'no information';\n    }\n    get Use() {\n        return this._use;\n    }\n    get canPickup() {\n        return this._canPickup;\n    }\n    set canPickup(pickup) {\n        this._canPickup = pickup;\n    }\n}\nexports[\"default\"] = GameObj;\n\n\n//# sourceURL=webpack://auris/./build/src/obj/GameObj.js?");
+
+/***/ }),
+
+/***/ "./build/src/obj/Item.js":
+/*!*******************************!*\
+  !*** ./build/src/obj/Item.js ***!
+  \*******************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst GameObj_1 = __importDefault(__webpack_require__(/*! ./GameObj */ \"./build/src/obj/GameObj.js\"));\nclass Item extends GameObj_1.default {\n    constructor() {\n        super();\n        this._value = 0;\n        this._canPickup = true;\n    }\n    get Value() {\n        return this._value;\n    }\n    set Value(value) {\n        this._value = value;\n    }\n    getInfo() {\n        return `${this.Name}.\n     ${this.Description}.\n     ${this.Offensive}.\n     ${this.Defensive}.\n     ${this.Value}`;\n    }\n}\nexports[\"default\"] = Item;\n\n\n//# sourceURL=webpack://auris/./build/src/obj/Item.js?");
 
 /***/ }),
 
@@ -86,7 +106,7 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexpo
   \****************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    var desc = Object.getOwnPropertyDescriptor(m, k);\n    if (!desc || (\"get\" in desc ? !m.__esModule : desc.writable || desc.configurable)) {\n      desc = { enumerable: true, get: function() { return m[k]; } };\n    }\n    Object.defineProperty(o, k2, desc);\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\n}) : function(o, v) {\n    o[\"default\"] = v;\n});\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\n    __setModuleDefault(result, mod);\n    return result;\n};\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst test_1 = __webpack_require__(/*! ./GameWorld/test */ \"./build/src/GameWorld/test/index.js\");\nconst Player_1 = __importDefault(__webpack_require__(/*! ./std/Player */ \"./build/src/std/Player.js\"));\nconst FOCUS = __importStar(__webpack_require__(/*! ./tools/Focus */ \"./build/src/tools/Focus.js\"));\nconst MainMenu_1 = __importDefault(__webpack_require__(/*! ./views/MainMenu */ \"./build/src/views/MainMenu.js\"));\nconst player = new Player_1.default();\nplayer.Room = test_1.testArea.loc1;\nFOCUS.ChangeView(new MainMenu_1.default());\nwindow.addEventListener('keydown', (event) => {\n    FOCUS.keyListener(event);\n});\n\n\n//# sourceURL=webpack://auris/./build/src/setup.js?");
+eval("\nvar __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    var desc = Object.getOwnPropertyDescriptor(m, k);\n    if (!desc || (\"get\" in desc ? !m.__esModule : desc.writable || desc.configurable)) {\n      desc = { enumerable: true, get: function() { return m[k]; } };\n    }\n    Object.defineProperty(o, k2, desc);\n}) : (function(o, m, k, k2) {\n    if (k2 === undefined) k2 = k;\n    o[k2] = m[k];\n}));\nvar __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {\n    Object.defineProperty(o, \"default\", { enumerable: true, value: v });\n}) : function(o, v) {\n    o[\"default\"] = v;\n});\nvar __importStar = (this && this.__importStar) || function (mod) {\n    if (mod && mod.__esModule) return mod;\n    var result = {};\n    if (mod != null) for (var k in mod) if (k !== \"default\" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);\n    __setModuleDefault(result, mod);\n    return result;\n};\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst test_1 = __webpack_require__(/*! ./GameWorld/test */ \"./build/src/GameWorld/test/index.js\");\nconst Player_1 = __importDefault(__webpack_require__(/*! ./std/Player */ \"./build/src/std/Player.js\"));\nconst FOCUS = __importStar(__webpack_require__(/*! ./tools/Focus */ \"./build/src/tools/Focus.js\"));\nconst MainMenu_1 = __importDefault(__webpack_require__(/*! ./views/MainMenu */ \"./build/src/views/MainMenu.js\"));\nconst player = new Player_1.default();\nplayer.Room = test_1.testArea.Locations.Loc1;\nFOCUS.ChangeView(new MainMenu_1.default());\nwindow.addEventListener('keydown', (event) => {\n    FOCUS.keyListener(event);\n});\n\n\n//# sourceURL=webpack://auris/./build/src/setup.js?");
 
 /***/ }),
 
@@ -107,6 +127,16 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /***/ ((__unused_webpack_module, exports) => {
 
 eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nexports.keyListener = exports.ChangeView = void 0;\nlet actualView;\nfunction ChangeView(view) {\n    actualView = view;\n}\nexports.ChangeView = ChangeView;\nfunction keyListener(key) {\n    actualView.Keyboard(key);\n}\nexports.keyListener = keyListener;\n\n\n//# sourceURL=webpack://auris/./build/src/tools/Focus.js?");
+
+/***/ }),
+
+/***/ "./build/src/tools/iterator.js":
+/*!*************************************!*\
+  !*** ./build/src/tools/iterator.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nclass Iterator {\n    constructor(arr) {\n        this._currentElement = undefined;\n        this._array = arr;\n        this._step = 0;\n    }\n    get CurrentStep() {\n        return this._step;\n    }\n    HasNext() {\n        if (this._step < this._array.length) {\n            return true;\n        }\n        return false;\n    }\n    Next() {\n        if (this.HasNext()) {\n            let element = this._array[this._step];\n            this._step += 1;\n            this._currentElement = element;\n            return element;\n        }\n        else {\n            throw new Error('the end of array');\n        }\n    }\n    Previous() {\n        if (this._step <= 0) {\n            throw new Error('the end of array');\n        }\n        if (this._step >= this._array.length) {\n            this._step = this._array.length;\n        }\n        this._step -= 1;\n        let element = this._array[this._step];\n        this._currentElement = element;\n        return element;\n    }\n    Reset() {\n        this._step = 0;\n    }\n    get CurrentElement() {\n        return this._currentElement;\n    }\n}\nexports[\"default\"] = Iterator;\n\n\n//# sourceURL=webpack://auris/./build/src/tools/iterator.js?");
 
 /***/ }),
 
@@ -140,13 +170,63 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 
 /***/ }),
 
+/***/ "./build/src/views/ContextMenu/BaseContextMenu.js":
+/*!********************************************************!*\
+  !*** ./build/src/views/ContextMenu/BaseContextMenu.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst Focus_1 = __webpack_require__(/*! ../../tools/Focus */ \"./build/src/tools/Focus.js\");\nconst BaseMenu_1 = __webpack_require__(/*! ../BaseMenu */ \"./build/src/views/BaseMenu.js\");\nclass BaseContextMenu extends BaseMenu_1.BaseMenu {\n    constructor(view, obj) {\n        super();\n        this._previousView = view;\n        this._obj = obj;\n    }\n    Keyboard(key) {\n        switch (key.key) {\n            case \"Escape\":\n                this.backToPreviousView();\n                break;\n            default:\n                super.Keyboard(key);\n                break;\n        }\n    }\n    _run() {\n        super._run();\n        this.backToPreviousView();\n    }\n    backToPreviousView() {\n        (0, Focus_1.ChangeView)(this._previousView);\n    }\n}\nexports[\"default\"] = BaseContextMenu;\n\n\n//# sourceURL=webpack://auris/./build/src/views/ContextMenu/BaseContextMenu.js?");
+
+/***/ }),
+
+/***/ "./build/src/views/ContextMenu/ContextMenuFactory.js":
+/*!***********************************************************!*\
+  !*** ./build/src/views/ContextMenu/ContextMenuFactory.js ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst ItemContextMenu_1 = __importDefault(__webpack_require__(/*! ./ItemContextMenu */ \"./build/src/views/ContextMenu/ItemContextMenu.js\"));\nconst MobContextMenu_1 = __importDefault(__webpack_require__(/*! ./MobContextMenu */ \"./build/src/views/ContextMenu/MobContextMenu.js\"));\nfunction createContextMenu(view, obj) {\n    switch (obj.constructor.name) {\n        case \"Item\":\n            return new ItemContextMenu_1.default(view, obj);\n            break;\n        case \"Mobile\":\n            return new MobContextMenu_1.default(view, obj);\n            break;\n        default:\n            return undefined;\n            break;\n    }\n}\nexports[\"default\"] = createContextMenu;\n\n\n//# sourceURL=webpack://auris/./build/src/views/ContextMenu/ContextMenuFactory.js?");
+
+/***/ }),
+
+/***/ "./build/src/views/ContextMenu/ItemContextMenu.js":
+/*!********************************************************!*\
+  !*** ./build/src/views/ContextMenu/ItemContextMenu.js ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst Player_1 = __importDefault(__webpack_require__(/*! ../../std/Player */ \"./build/src/std/Player.js\"));\nconst BaseContextMenu_1 = __importDefault(__webpack_require__(/*! ./BaseContextMenu */ \"./build/src/views/ContextMenu/BaseContextMenu.js\"));\nclass ItemContextMenu extends BaseContextMenu_1.default {\n    constructor(view, obj) {\n        super(view, obj);\n        this._options = [\n            [\"podnieś\", () => {\n                    var _a, _b;\n                    if (this._obj.canPickup) {\n                        (_b = (_a = Player_1.default.Instance) === null || _a === void 0 ? void 0 : _a.Room) === null || _b === void 0 ? void 0 : _b.removeObject(this._obj);\n                    }\n                    else {\n                        this.say(\"tego nie morzna podnieść\");\n                    }\n                }],\n            [\"obejrzyj\", () => {\n                    const info = this._obj.getInfo();\n                    this.say(info);\n                }]\n        ];\n    }\n}\nexports[\"default\"] = ItemContextMenu;\n\n\n//# sourceURL=webpack://auris/./build/src/views/ContextMenu/ItemContextMenu.js?");
+
+/***/ }),
+
+/***/ "./build/src/views/ContextMenu/MobContextMenu.js":
+/*!*******************************************************!*\
+  !*** ./build/src/views/ContextMenu/MobContextMenu.js ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst BaseContextMenu_1 = __importDefault(__webpack_require__(/*! ./BaseContextMenu */ \"./build/src/views/ContextMenu/BaseContextMenu.js\"));\nclass MobContextMenu extends BaseContextMenu_1.default {\n    constructor(view, obj) {\n        super(view, obj);\n        this._options = [\n            [\"atakuj\", () => {\n                    this.say(\"narazie atak został wyłączony\");\n                }],\n            [\"obejrzyj\", () => {\n                    const info = this._obj.getInfo();\n                    this.say(info);\n                }]\n        ];\n    }\n}\nexports[\"default\"] = MobContextMenu;\n\n\n//# sourceURL=webpack://auris/./build/src/views/ContextMenu/MobContextMenu.js?");
+
+/***/ }),
+
+/***/ "./build/src/views/GameBoard.js":
+/*!**************************************!*\
+  !*** ./build/src/views/GameBoard.js ***!
+  \**************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst BaseView_1 = __importDefault(__webpack_require__(/*! ./BaseView */ \"./build/src/views/BaseView.js\"));\nconst iterator_1 = __importDefault(__webpack_require__(/*! ../tools/iterator */ \"./build/src/tools/iterator.js\"));\nconst Focus_1 = __webpack_require__(/*! ../tools/Focus */ \"./build/src/tools/Focus.js\");\nconst ContextMenuFactory_1 = __importDefault(__webpack_require__(/*! ./ContextMenu/ContextMenuFactory */ \"./build/src/views/ContextMenu/ContextMenuFactory.js\"));\nconst Player_1 = __importDefault(__webpack_require__(/*! ../std/Player */ \"./build/src/std/Player.js\"));\nclass GameBoard extends BaseView_1.default {\n    constructor() {\n        super();\n        this._cursor = { x: 0, y: 0 };\n        this._objIter = new iterator_1.default([]);\n        if (Player_1.default.Instance != undefined)\n            this._location = Player_1.default.Instance.Room;\n    }\n    cursor() {\n        this.say(this._collectionSummary());\n        if (this._objects != undefined)\n            this._objIter = new iterator_1.default(this._objects);\n    }\n    cursorUp() {\n        var _a;\n        if (this._cursor.y < this._location.Floors.length) {\n            this._cursor.y += 1;\n            this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);\n            this.cursor();\n        }\n        else {\n            this.say(\"tam nie ma nic\");\n            this._cursor.y--;\n        }\n    }\n    cursorDown() {\n        var _a;\n        if (this._cursor.y > 0) {\n            this._cursor.y -= 1;\n            this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);\n            this.cursor();\n        }\n        else {\n            this.say(\"tam nie ma nic\");\n            this._cursor.y++;\n        }\n    }\n    cursorLeft() {\n        var _a;\n        if (this._cursor.x > 0) {\n            this._cursor.x -= 1;\n            this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);\n            this.cursor();\n        }\n        else {\n            this.say(\"tam nie ma nic\");\n            this._cursor.x++;\n        }\n    }\n    cursorRight() {\n        var _a;\n        if (this._cursor.x < this._location.Floors[this._cursor.y].length) {\n            this._cursor.x += 1;\n            this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);\n            this.cursor();\n        }\n        else {\n            this.say(\"tam nic nie ma\");\n            this._cursor.x--;\n        }\n    }\n    cursorTab() {\n        var _a, _b;\n        if (this._objects != undefined && this._objects.length > 0) {\n            if (this._objIter.HasNext()) {\n                this._selectedObject = this._objIter.Next();\n                if (((_a = this._selectedObject) === null || _a === void 0 ? void 0 : _a.Name) != undefined)\n                    this.say((_b = this._selectedObject) === null || _b === void 0 ? void 0 : _b.Name);\n            }\n            else {\n                this._objIter.Reset();\n                this.cursorTab();\n            }\n        }\n        else {\n            this.say(\"nic tu nie ma\");\n        }\n    }\n    execute() {\n        if (this._selectedObject)\n            (0, Focus_1.ChangeView)((0, ContextMenuFactory_1.default)(this, this._selectedObject));\n    }\n    exit() {\n        //new context menu z zapisz main menu i wroc do gry\n    }\n    Keyboard(key) {\n        switch (key.key) {\n            case \"ArrowUp\":\n                this.cursorUp();\n                break;\n            case \"ArrowDown\":\n                this.cursorDown();\n                break;\n            case \"ArrowLeft\":\n                this.cursorLeft();\n                break;\n            case \"ArrowRight\":\n                this.cursorRight();\n                break;\n            case \"Enter\":\n                this.execute();\n                break;\n            case \"Escape\":\n                this.exit();\n                break;\n            case \"Tab\":\n                this.cursorTab();\n                break;\n            default:\n                super.Keyboard(key);\n                break;\n        }\n    }\n    _collectionSummary() {\n        var _a, _b;\n        let summary = '';\n        if (this._objects != undefined) {\n            if (this._objects.length > 0) {\n                summary = `\n${(_a = this._location) === null || _a === void 0 ? void 0 : _a.getFloor(this._cursor.x, this._cursor.y)}.\nObiekty: ${this._objects.length}`;\n            }\n            else {\n                summary = `\n    ${(_b = this._location) === null || _b === void 0 ? void 0 : _b.getFloor(this._cursor.x, this._cursor.y)}.\n`;\n            }\n        }\n        return summary;\n    }\n}\nexports[\"default\"] = GameBoard;\n\n\n//# sourceURL=webpack://auris/./build/src/views/GameBoard.js?");
+
+/***/ }),
+
 /***/ "./build/src/views/MainMenu.js":
 /*!*************************************!*\
   !*** ./build/src/views/MainMenu.js ***!
   \*************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst BaseMenu_1 = __webpack_require__(/*! ./BaseMenu */ \"./build/src/views/BaseMenu.js\");\nconst Focus_1 = __webpack_require__(/*! ../tools/Focus */ \"./build/src/tools/Focus.js\");\nconst Options_1 = __importDefault(__webpack_require__(/*! ./Options/Options */ \"./build/src/views/Options/Options.js\"));\nclass MainMenu extends BaseMenu_1.BaseMenu {\n    constructor() {\n        super();\n        this.say(\"Menu Główne\");\n        this._options = [\n            [\"Graj\", () => {\n                    this.say(\"uruchamiam gre\");\n                }],\n            [\"Opcje\", () => {\n                    (0, Focus_1.ChangeView)(new Options_1.default());\n                }],\n            [\"wyjście\", () => {\n                    window.close();\n                }]\n        ];\n    }\n}\nexports[\"default\"] = MainMenu;\n\n\n//# sourceURL=webpack://auris/./build/src/views/MainMenu.js?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst BaseMenu_1 = __webpack_require__(/*! ./BaseMenu */ \"./build/src/views/BaseMenu.js\");\nconst Focus_1 = __webpack_require__(/*! ../tools/Focus */ \"./build/src/tools/Focus.js\");\nconst Options_1 = __importDefault(__webpack_require__(/*! ./Options/Options */ \"./build/src/views/Options/Options.js\"));\nconst GameBoard_1 = __importDefault(__webpack_require__(/*! ./GameBoard */ \"./build/src/views/GameBoard.js\"));\nclass MainMenu extends BaseMenu_1.BaseMenu {\n    constructor() {\n        super();\n        this.say(\"Menu Główne\");\n        this._options = [\n            [\"Graj\", () => {\n                    this.say(\"uruchamiam gre\");\n                    (0, Focus_1.ChangeView)(new GameBoard_1.default());\n                }],\n            [\"Opcje\", () => {\n                    (0, Focus_1.ChangeView)(new Options_1.default());\n                }],\n            [\"wyjście\", () => {\n                    window.close();\n                }]\n        ];\n    }\n}\nexports[\"default\"] = MainMenu;\n\n\n//# sourceURL=webpack://auris/./build/src/views/MainMenu.js?");
 
 /***/ }),
 

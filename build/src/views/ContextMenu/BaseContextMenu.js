@@ -18,8 +18,8 @@ class BaseContextMenu extends BaseMenu_1.BaseMenu {
                 break;
         }
     }
-    _cursor(position) {
-        super._cursor(position);
+    _run() {
+        super._run();
         this.backToPreviousView();
     }
     backToPreviousView() {

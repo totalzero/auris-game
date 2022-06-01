@@ -1,11 +1,13 @@
-import Loc1 from "./Loc1"
-import Loc2 from "./Loc2"
-
-const loc1 = Loc1()
-const loc2 = Loc2()
-
-
+import { Loc1 } from "./loc1"
+import { Item1 } from "./item1"
 export const testArea = {
-    loc1,
-    loc2,
+    Locations: {
+ Loc1,       
+    },
+    Npcs: {
+
+    },
+    Items: {
+Item1,        
+    }
 }
