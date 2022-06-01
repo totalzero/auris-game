@@ -18,15 +18,15 @@ Keyboard(key: KeyboardEvent): void {
         case "Escape":
             this.backToPreviousView()
             break;
-    
-        default:
+
+                default:
             super.Keyboard(key)
             break;
     }
 }
 
-protected _cursor(position: menuItem): void {
-    super._cursor(position)
+protected _run(): void {
+    super._run()
     this.backToPreviousView()
 }
 

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const BaseMenu_1 = require("./BaseMenu");
 const Focus_1 = require("../tools/Focus");
 const Options_1 = __importDefault(require("./Options/Options"));
+const GameBoard_1 = __importDefault(require("./GameBoard"));
 class MainMenu extends BaseMenu_1.BaseMenu {
     constructor() {
         super();
@@ -13,6 +14,7 @@ class MainMenu extends BaseMenu_1.BaseMenu {
         this._options = [
             ["Graj", () => {
                     this.say("uruchamiam gre");
+                    (0, Focus_1.ChangeView)(new GameBoard_1.default());
                 }],
             ["Opcje", () => {
                     (0, Focus_1.ChangeView)(new Options_1.default());

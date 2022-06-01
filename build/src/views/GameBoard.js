@@ -23,27 +23,51 @@ class GameBoard extends BaseView_1.default {
     }
     cursorUp() {
         var _a;
-        this._cursor.y += 1;
-        this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);
-        this.cursor();
+        if (this._cursor.y < this._location.Floors.length) {
+            this._cursor.y += 1;
+            this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);
+            this.cursor();
+        }
+        else {
+            this.say("tam nie ma nic");
+            this._cursor.y--;
+        }
     }
     cursorDown() {
         var _a;
-        this._cursor.y -= 1;
-        this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);
-        this.cursor();
+        if (this._cursor.y > 0) {
+            this._cursor.y -= 1;
+            this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);
+            this.cursor();
+        }
+        else {
+            this.say("tam nie ma nic");
+            this._cursor.y++;
+        }
     }
     cursorLeft() {
         var _a;
-        this._cursor.x -= 1;
-        this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);
-        this.cursor();
+        if (this._cursor.x > 0) {
+            this._cursor.x -= 1;
+            this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);
+            this.cursor();
+        }
+        else {
+            this.say("tam nie ma nic");
+            this._cursor.x++;
+        }
     }
     cursorRight() {
         var _a;
-        this._cursor.x += 1;
-        this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);
-        this.cursor();
+        if (this._cursor.x < this._location.Floors[this._cursor.y].length) {
+            this._cursor.x += 1;
+            this._objects = (_a = this._location) === null || _a === void 0 ? void 0 : _a.getObject(this._cursor.x, this._cursor.y);
+            this.cursor();
+        }
+        else {
+            this.say("tam nic nie ma");
+            this._cursor.x--;
+        }
     }
     cursorTab() {
         var _a, _b;
@@ -98,13 +122,19 @@ class GameBoard extends BaseView_1.default {
         }
     }
     _collectionSummary() {
-        var _a;
+        var _a, _b;
         let summary = '';
         if (this._objects != undefined) {
-            if (this._objects.length > 0)
+            if (this._objects.length > 0) {
                 summary = `
 ${(_a = this._location) === null || _a === void 0 ? void 0 : _a.getFloor(this._cursor.x, this._cursor.y)}.
 Obiekty: ${this._objects.length}`;
+            }
+            else {
+                summary = `
+    ${(_b = this._location) === null || _b === void 0 ? void 0 : _b.getFloor(this._cursor.x, this._cursor.y)}.
+`;
+            }
         }
         return summary;
     }
