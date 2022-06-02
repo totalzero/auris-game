@@ -7,7 +7,7 @@ function loc1(): Room {
 l.Name = "lokacja testowa numer 1"
 l.Description = "to jest po prostu lokacja testowa, wiec nie spodziewaj sie niczego niezwyklego"
 l.Floors = [
-    [Floors.grass, Floors.stone, Floors.grass],
+    [Floors.grass, Floors.stone, Floors.none],
     [Floors.grass, Floors.stone, Floors.grass],
     [Floors.grass, Floors.stone, Floors.grass]
 ]

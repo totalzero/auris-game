@@ -8,6 +8,7 @@ const iterator_1 = __importDefault(require("../tools/iterator"));
 const Focus_1 = require("../tools/Focus");
 const ContextMenuFactory_1 = __importDefault(require("./ContextMenu/ContextMenuFactory"));
 const Player_1 = __importDefault(require("../std/Player"));
+const MiniMapView_1 = __importDefault(require("./MiniMapView"));
 class GameBoard extends BaseView_1.default {
     constructor() {
         super();
@@ -91,6 +92,9 @@ class GameBoard extends BaseView_1.default {
     }
     Keyboard(key) {
         switch (key.key) {
+            case "m":
+                this.openMinimap();
+                break;
             case "ArrowUp":
                 this.cursorUp();
                 break;
@@ -133,6 +137,9 @@ Obiekty: ${this._objects.length}`;
             }
         }
         return summary;
+    }
+    openMinimap() {
+        (0, Focus_1.ChangeView)(new MiniMapView_1.default(this));
     }
 }
 exports.default = GameBoard;

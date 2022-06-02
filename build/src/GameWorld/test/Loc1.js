@@ -12,7 +12,7 @@ function loc1() {
     l.Name = "lokacja testowa numer 1";
     l.Description = "to jest po prostu lokacja testowa, wiec nie spodziewaj sie niczego niezwyklego";
     l.Floors = [
-        [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass],
+        [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.none],
         [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass],
         [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass]
     ];

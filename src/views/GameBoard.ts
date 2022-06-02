@@ -5,6 +5,7 @@ import createContextMenu from "./ContextMenu/ContextMenuFactory";
 import Room from "../obj/Room";
 import GameObj from "../obj/GameObj";
 import Player from "../std/Player";
+import MiniMapView from "./MiniMapView";
 
 export default class GameBoard extends BaseView {
     private _location?: Room 
@@ -93,6 +94,11 @@ private exit() {
 
  Keyboard(key: KeyboardEvent): void {
  switch (key.key) {
+
+case "m":
+this.openMinimap()
+break;
+
      case "ArrowUp":
     this.cursorUp()     
          break;
@@ -142,6 +148,10 @@ Obiekty: ${this._objects.length}`
 }
 
 return summary
+}
+
+private openMinimap() {
+    ChangeView(new MiniMapView(this))
 }
 
 }
