@@ -7,6 +7,7 @@ exports.Loc1 = void 0;
 const Floors_1 = require("../../obj/Floors");
 const Room_1 = __importDefault(require("../../obj/Room"));
 const item1_1 = require("./item1");
+const loc2_1 = require("./loc2");
 function loc1() {
     const l = new Room_1.default();
     l.Name = "lokacja testowa numer 1";
@@ -17,6 +18,7 @@ function loc1() {
         [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass]
     ];
     l.AddObject(item1_1.Item1);
+    l.Exits.north = loc2_1.Loc2;
     return l;
 }
 exports.Loc1 = loc1();

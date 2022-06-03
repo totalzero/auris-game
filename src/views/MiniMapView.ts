@@ -43,11 +43,14 @@ this.close()
  }   
 
 private cursor() {
+    /*
 if (this._location == Player.Instance?.Room) {
     this.say("*" + this._location!.Name)
 } else {
     this.say(this._location!.Name)
 }
+*/
+this.say(this._location!.Name)
 }
 
  private cursorNorth() {
@@ -75,6 +78,8 @@ ChangeView(this._gameBoard)
 if (location) {
  this._location = location  
  this.cursor()
+} else {
+    this.say("brak")
 }
  }
 }

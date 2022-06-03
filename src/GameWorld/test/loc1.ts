@@ -1,6 +1,7 @@
 import { Floors } from "../../obj/Floors";
 import Room from "../../obj/Room";
 import { Item1 } from "./item1";
+import { Loc2 } from "./loc2";
 
 function loc1(): Room {
  const l = new Room()
@@ -13,7 +14,7 @@ l.Floors = [
 ]
 
 l.AddObject(Item1)
-
+l.Exits.north = Loc2
  return l
 }
 

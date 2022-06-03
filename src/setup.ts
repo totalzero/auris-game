@@ -12,5 +12,3 @@ window.addEventListener('keydown', (event) => {
   FOCUS.keyListener(event)  
 })
 
-//const player = new Player()
-//player.Room = testArea.loc1

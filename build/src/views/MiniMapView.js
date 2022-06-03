@@ -37,13 +37,14 @@ class MiniMapView extends BaseView_1.default {
         }
     }
     cursor() {
-        var _a;
-        if (this._location == ((_a = Player_1.default.Instance) === null || _a === void 0 ? void 0 : _a.Room)) {
-            this.say("*" + this._location.Name);
-        }
-        else {
-            this.say(this._location.Name);
-        }
+        /*
+    if (this._location == Player.Instance?.Room) {
+        this.say("*" + this._location!.Name)
+    } else {
+        this.say(this._location!.Name)
+    }
+    */
+        this.say(this._location.Name);
     }
     cursorNorth() {
         var _a, _b;
@@ -69,6 +70,9 @@ class MiniMapView extends BaseView_1.default {
         if (location) {
             this._location = location;
             this.cursor();
+        }
+        else {
+            this.say("brak");
         }
     }
 }

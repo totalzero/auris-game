@@ -3,15 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const _1 = require(".");
+exports.Loc2 = void 0;
 const Room_1 = __importDefault(require("../../obj/Room"));
-function Loc2() {
+const loc1_1 = require("./loc1");
+function loc2() {
     const l = new Room_1.default();
-    l.Name = "lokacja 2";
-    l.Description = "to jest druga lokacja testowa";
-    l.Exits = {
-        south: _1.testArea.loc1
-    };
+    l.Name = "to jest lokacja druga testowa";
+    l.Description = "druga testowa lokacja wiec sie nie spodziewaj niewiadomo czego";
+    l.Exits.south = loc1_1.Loc1;
     return l;
 }
-exports.default = Loc2;
+exports.Loc2 = loc2();
