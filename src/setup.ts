@@ -4,7 +4,7 @@ import * as FOCUS from "./tools/Focus"
 import MainMenu from "./views/MainMenu"
 
 const player = new Player()
-player.Room = testArea.Locations.Loc1
+player.Room = testArea.Locations.loc1
 
 
 FOCUS.ChangeView(new MainMenu())

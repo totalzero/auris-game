@@ -4,21 +4,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Loc1 = void 0;
+const _1 = require(".");
 const Floors_1 = require("../../obj/Floors");
 const Room_1 = __importDefault(require("../../obj/Room"));
 const item1_1 = require("./item1");
-const loc2_1 = require("./loc2");
-function loc1() {
-    const l = new Room_1.default();
-    l.Name = "lokacja testowa numer 1";
-    l.Description = "to jest po prostu lokacja testowa, wiec nie spodziewaj sie niczego niezwyklego";
-    l.Floors = [
-        [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.none],
-        [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass],
-        [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass]
-    ];
-    l.AddObject(item1_1.Item1);
-    l.Exits.north = loc2_1.Loc2;
-    return l;
+class Loc1 extends Room_1.default {
+    constructor() {
+        super();
+        this.Name = "lokacja testowa numer 1";
+        this.Description = "to jest po prostu lokacja testowa, wiec nie spodziewaj sie niczego niezwyklego";
+        this.Floors = [
+            [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.none],
+            [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass],
+            [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass]
+        ];
+        this.AddObject(item1_1.Item1);
+        this.Exits.north = _1.testArea.Locations.loc2;
+    }
 }
-exports.Loc1 = loc1();
+exports.Loc1 = Loc1;

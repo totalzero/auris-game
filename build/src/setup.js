@@ -31,7 +31,7 @@ const Player_1 = __importDefault(require("./std/Player"));
 const FOCUS = __importStar(require("./tools/Focus"));
 const MainMenu_1 = __importDefault(require("./views/MainMenu"));
 const player = new Player_1.default();
-player.Room = test_1.testArea.Locations.Loc1;
+player.Room = test_1.testArea.Locations.loc1;
 FOCUS.ChangeView(new MainMenu_1.default());
 window.addEventListener('keydown', (event) => {
     FOCUS.keyListener(event);
