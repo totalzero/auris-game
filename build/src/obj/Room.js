@@ -1,8 +1,13 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const AreaManager_1 = __importDefault(require("../tools/AreaManager"));
 const Floors_1 = require("./Floors");
 class Room {
     constructor() {
+        var _a;
         this._name = "";
         this._desc = "";
         this._exits = {};
@@ -11,6 +16,7 @@ class Room {
         this._floor = [[Floors_1.Floors.none, Floors_1.Floors.none, Floors_1.Floors.none],
             [Floors_1.Floors.none, Floors_1.Floors.none, Floors_1.Floors.none],
             [Floors_1.Floors.none, Floors_1.Floors.none, Floors_1.Floors.none]];
+        (_a = AreaManager_1.default.Instance) === null || _a === void 0 ? void 0 : _a.setLocation(this);
     }
     get Name() {
         return this._name;

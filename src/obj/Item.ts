@@ -1,3 +1,4 @@
+import AreaManager from "../tools/AreaManager";
 import GameObj from "./GameObj";
 
 export default class Item extends GameObj {
@@ -6,6 +7,7 @@ export default class Item extends GameObj {
 constructor() {
     super()
     this._canPickup = true
+    AreaManager.Instance?.setItem(this)
 }
 
  get Value(): number {

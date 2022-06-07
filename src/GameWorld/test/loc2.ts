@@ -7,6 +7,6 @@ export class Loc2 extends Room {
         super()
         this.Name = "lokacja druga testowa"
         this.Description = "to jest druga testowa lokacja, wiec nie spodziewaj sie niczego "
-        this.Exits.south = testArea.Locations.loc1
+        
     }
 }

@@ -1,4 +1,5 @@
 import { randomBoolean, randomInteger } from "../random";
+import AreaManager from "../tools/AreaManager";
 import GameObj from "./GameObj";
 import Item from "./Item";
 
@@ -11,6 +12,7 @@ protected _move: boolean = true
 constructor() {
     super()
     this._canPickup = false
+    AreaManager.Instance?.setMob(this)
 }
 
 get Equipment(): Item[] {

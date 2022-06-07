@@ -2,14 +2,24 @@ import Item from "../obj/Item"
 import Mobile from "../obj/Mobile"
 import Room from "../obj/Room"
 
+/**
+ * this class store created Rooms, mobiles and items in game.
+ * uses the map<> fields where the key is class name and value is object of this class
+ */
+
 export default class AreaManager {
  private static Manager?: AreaManager   
 private _locations: Map<string, Room> = new Map<string, Room>()
 private _items: Map<string, Item> = new Map<string, Item>()
 private _mobs: Map<string, Mobile> = new Map<string, Mobile>()
+
  constructor() {
      AreaManager.Manager = this
  }
+
+/**
+ * singleton pattern
+ */
 
 static get Instance(): AreaManager | undefined {
     return AreaManager.Manager

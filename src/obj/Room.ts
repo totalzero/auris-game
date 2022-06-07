@@ -1,3 +1,4 @@
+import AreaManager from '../tools/AreaManager'
 import { Exits } from './Exits'
 import { Floors } from './Floors'
 import GameObj from './GameObj'
@@ -11,6 +12,10 @@ private _respawn: GameObj[] = []
 private _floor: Floors[][] = [[Floors.none, Floors.none, Floors.none],
 [Floors.none, Floors.none, Floors.none],
 [Floors.none, Floors.none, Floors.none]]
+
+constructor() {
+    AreaManager.Instance?.setLocation(this)
+}
 
 get Name(): string {
  return this._name   

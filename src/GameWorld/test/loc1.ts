@@ -17,7 +17,7 @@ this.Floors = [
 ]
 
 this.AddObject(Item1)
-this.Exits.north = testArea.Locations.loc2
+
 }
 }
 

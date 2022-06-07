@@ -1,5 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * this class store created Rooms, mobiles and items in game.
+ * uses the map<> fields where the key is class name and value is object of this class
+ */
 class AreaManager {
     constructor() {
         this._locations = new Map();
@@ -7,6 +11,9 @@ class AreaManager {
         this._mobs = new Map();
         AreaManager.Manager = this;
     }
+    /**
+     * singleton pattern
+     */
     static get Instance() {
         return AreaManager.Manager;
     }

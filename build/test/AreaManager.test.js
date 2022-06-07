@@ -16,24 +16,19 @@ class testLocation extends Room_1.default {
 }
 class testItem extends Item_1.default {
     constructor() {
-        var _a;
         super();
         this.Name = "item testowy";
-        (_a = AreaManager_1.default.Instance) === null || _a === void 0 ? void 0 : _a.setItem(this);
     }
 }
 class testMob extends Mobile_1.default {
     constructor() {
-        var _a;
         super();
         this.Name = "npc testowy";
-        (_a = AreaManager_1.default.Instance) === null || _a === void 0 ? void 0 : _a.setMob(this);
     }
 }
 test('when AreaManager.get name of class then return this class object', () => {
     var _a;
     const manager = new AreaManager_1.default();
-    manager.setLocation(new testLocation());
     const testloc = new testLocation();
     expect((_a = manager.getLocation(testLocation.name)) === null || _a === void 0 ? void 0 : _a.Name).toBe(testloc.Name);
 });
@@ -46,4 +41,15 @@ test('when AreaManager.getMob with mob class then return this class object', () 
     var _a, _b;
     const mob = new testMob();
     expect((_b = (_a = AreaManager_1.default.Instance) === null || _a === void 0 ? void 0 : _a.getMob(testMob.name)) === null || _b === void 0 ? void 0 : _b.Name).toBe(mob.Name);
+});
+test('check if next class location will be correctly saved in AreaManager', () => {
+    var _a, _b;
+    class secondTestLocation extends Room_1.default {
+        constructor() {
+            super();
+            this.Name = "second test class location";
+        }
+    }
+    const secLocation = new secondTestLocation();
+    expect((_b = (_a = AreaManager_1.default.Instance) === null || _a === void 0 ? void 0 : _a.getLocation(secondTestLocation.name)) === null || _b === void 0 ? void 0 : _b.Name).toBe(secLocation.Name);
 });
