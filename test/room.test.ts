@@ -5,7 +5,8 @@ import GameObj from "../src/obj/GameObj"
 const loc = new Room()  
 
 function newRoom(): Room {
-  return new Room()
+  class testRoom extends Room {}
+  return new testRoom()
 }
 
 function newObject(): GameObj {
@@ -69,7 +70,7 @@ test('set valid parameters to Room.Floors', () => {
 
 test('checking set exit to room', () => {
   const rm = newRoom()
-rm.Exits.north = new Room()
+rm.Exits.north = new Room().constructor
 expect(rm.Exits.north).toBeDefined()
 })
 

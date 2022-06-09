@@ -8,7 +8,9 @@ const Floors_1 = require("../src/obj/Floors");
 const GameObj_1 = __importDefault(require("../src/obj/GameObj"));
 const loc = new Room_1.default();
 function newRoom() {
-    return new Room_1.default();
+    class testRoom extends Room_1.default {
+    }
+    return new testRoom();
 }
 function newObject() {
     class TestObject extends GameObj_1.default {
@@ -61,7 +63,7 @@ test('set valid parameters to Room.Floors', () => {
 });
 test('checking set exit to room', () => {
     const rm = newRoom();
-    rm.Exits.north = new Room_1.default();
+    rm.Exits.north = new Room_1.default().constructor;
     expect(rm.Exits.north).toBeDefined();
 });
 test('add object to Room.objects', () => {

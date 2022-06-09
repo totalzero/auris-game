@@ -7,6 +7,7 @@ exports.Loc1 = void 0;
 const Floors_1 = require("../../obj/Floors");
 const Room_1 = __importDefault(require("../../obj/Room"));
 const item1_1 = require("./item1");
+const loc2_1 = require("./loc2");
 class Loc1 extends Room_1.default {
     constructor() {
         super();
@@ -17,6 +18,7 @@ class Loc1 extends Room_1.default {
             [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass],
             [Floors_1.Floors.grass, Floors_1.Floors.stone, Floors_1.Floors.grass]
         ];
+        this.Exits.north = loc2_1.Loc2;
         this.AddObject(item1_1.Item1);
     }
 }

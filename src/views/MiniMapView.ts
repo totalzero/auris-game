@@ -1,6 +1,7 @@
 import Room from "../obj/Room";
 import Player from "../std/Player";
 import { ChangeView } from "../tools/Focus";
+import GameState from "../tools/GameState";
 import BaseView from "./BaseView";
 import GameBoard from "./GameBoard";
 
@@ -74,9 +75,9 @@ this.isLocation(this._location?.Exits?.east)
 ChangeView(this._gameBoard)
  }
 
- private isLocation(location: Room | undefined) {
+ private isLocation(location: Function | undefined) {
 if (location) {
- this._location = location  
+ this._location = GameState.getRoom(location)
  this.cursor()
 } else {
     this.say("brak")

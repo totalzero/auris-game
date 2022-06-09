@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Player_1 = __importDefault(require("../std/Player"));
 const Focus_1 = require("../tools/Focus");
+const GameState_1 = __importDefault(require("../tools/GameState"));
 const BaseView_1 = __importDefault(require("./BaseView"));
 class MiniMapView extends BaseView_1.default {
     constructor(board) {
@@ -68,7 +69,7 @@ class MiniMapView extends BaseView_1.default {
     }
     isLocation(location) {
         if (location) {
-            this._location = location;
+            this._location = GameState_1.default.getRoom(location);
             this.cursor();
         }
         else {

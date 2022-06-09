@@ -4,17 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const random_1 = require("../random");
-const AreaManager_1 = __importDefault(require("../tools/AreaManager"));
 const GameObj_1 = __importDefault(require("./GameObj"));
 class Mobile extends GameObj_1.default {
     constructor() {
-        var _a;
         super();
         this._equipment = [];
         this._hp = 100;
         this._move = true;
         this._canPickup = false;
-        (_a = AreaManager_1.default.Instance) === null || _a === void 0 ? void 0 : _a.setMob(this);
     }
     get Equipment() {
         return this._equipment;

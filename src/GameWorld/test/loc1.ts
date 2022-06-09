@@ -1,10 +1,13 @@
 import { testArea } from ".";
 import { Floors } from "../../obj/Floors";
 import Room from "../../obj/Room";
+import GameState from "../../tools/GameState";
+
 import { Item1 } from "./item1";
 import { Loc2 } from "./loc2";
 
 export class Loc1 extends Room {
+    
  constructor() {
      super()
  
@@ -15,7 +18,7 @@ this.Floors = [
     [Floors.grass, Floors.stone, Floors.grass],
     [Floors.grass, Floors.stone, Floors.grass]
 ]
-
+this.Exits.north = Loc2
 this.AddObject(Item1)
 
 }
