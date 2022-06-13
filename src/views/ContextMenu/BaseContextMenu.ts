@@ -28,7 +28,7 @@ Keyboard(key: KeyboardEvent): void {
 
 protected _run(): void {
     super._run()
-    this.backToPreviousView()
+    //this.backToPreviousView()
 }
 
  protected backToPreviousView() {

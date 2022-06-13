@@ -9,6 +9,7 @@ const Focus_1 = require("../tools/Focus");
 const ContextMenuFactory_1 = __importDefault(require("./ContextMenu/ContextMenuFactory"));
 const Player_1 = __importDefault(require("../std/Player"));
 const MiniMapView_1 = __importDefault(require("./MiniMapView"));
+const ExitsMenu_1 = __importDefault(require("./ExitsMenu"));
 class GameBoard extends BaseView_1.default {
     constructor() {
         super();
@@ -92,6 +93,9 @@ class GameBoard extends BaseView_1.default {
     }
     Keyboard(key) {
         switch (key.key) {
+            case "e":
+                this.openExitsMenu();
+                break;
             case "m":
                 this.openMinimap();
                 break;
@@ -140,6 +144,9 @@ Obiekty: ${this._objects.length}`;
     }
     openMinimap() {
         (0, Focus_1.ChangeView)(new MiniMapView_1.default(this));
+    }
+    openExitsMenu() {
+        (0, Focus_1.ChangeView)(new ExitsMenu_1.default(this));
     }
 }
 exports.default = GameBoard;

@@ -6,6 +6,7 @@ import Room from "../obj/Room";
 import GameObj from "../obj/GameObj";
 import Player from "../std/Player";
 import MiniMapView from "./MiniMapView";
+import ExitsMenu from "./ExitsMenu";
 
 export default class GameBoard extends BaseView {
     private _location?: Room 
@@ -95,6 +96,10 @@ private exit() {
  Keyboard(key: KeyboardEvent): void {
  switch (key.key) {
 
+case "e" :
+this.openExitsMenu()
+break;
+
 case "m":
 this.openMinimap()
 break;
@@ -152,6 +157,10 @@ return summary
 
 private openMinimap() {
     ChangeView(new MiniMapView(this))
+}
+
+private openExitsMenu() {
+    ChangeView(new ExitsMenu(this))
 }
 
 }

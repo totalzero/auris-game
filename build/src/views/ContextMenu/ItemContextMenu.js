@@ -13,6 +13,7 @@ class ItemContextMenu extends BaseContextMenu_1.default {
                     var _a, _b;
                     if (this._obj.canPickup) {
                         (_b = (_a = Player_1.default.Instance) === null || _a === void 0 ? void 0 : _a.Room) === null || _b === void 0 ? void 0 : _b.removeObject(this._obj);
+                        this.backToPreviousView();
                     }
                     else {
                         this.say("tego nie morzna podnieść");

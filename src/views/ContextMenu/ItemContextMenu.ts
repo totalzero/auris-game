@@ -10,6 +10,7 @@ this._options = [
     ["podnieś", () => {
         if (this._obj.canPickup) {
             Player.Instance?.Room?.removeObject(this._obj)
+            this.backToPreviousView()
         }else {
 this.say("tego nie morzna podnieść")
         }

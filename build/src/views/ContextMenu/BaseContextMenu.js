@@ -21,7 +21,7 @@ class BaseContextMenu extends BaseMenu_1.BaseMenu {
     }
     _run() {
         super._run();
-        this.backToPreviousView();
+        //this.backToPreviousView()
     }
     backToPreviousView() {
         this.say("zamykam menu");
