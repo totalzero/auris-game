@@ -38,14 +38,13 @@ class MiniMapView extends BaseView_1.default {
         }
     }
     cursor() {
-        /*
-    if (this._location == Player.Instance?.Room) {
-        this.say("*" + this._location!.Name)
-    } else {
-        this.say(this._location!.Name)
-    }
-    */
-        this.say(this._location.Name);
+        var _a;
+        if (this._location == ((_a = Player_1.default.Instance) === null || _a === void 0 ? void 0 : _a.Room)) {
+            this.say("tutaj jesteś: " + this._location.Name + ", " + this.exitInfo());
+        }
+        else {
+            this.say(this._location.Name + ", " + this.exitInfo());
+        }
     }
     cursorNorth() {
         var _a, _b;
@@ -75,6 +74,36 @@ class MiniMapView extends BaseView_1.default {
         else {
             this.say("brak");
         }
+    }
+    exitInfo() {
+        function convert(i) {
+            switch (i) {
+                case "north":
+                    return "Północ";
+                    break;
+                case "south":
+                    return "Południe";
+                    break;
+                case "west":
+                    return "Zachód";
+                    break;
+                case "east":
+                    return "Wschód";
+                    break;
+                default:
+                    return "";
+                    break;
+            }
+        }
+        let info = "";
+        const exits = [];
+        for (let i in this._location.Exits) {
+            exits.push(convert(i));
+        }
+        for (let ex of exits) {
+            info = info + ", " + ex;
+        }
+        return "wyjścia: " + exits;
     }
 }
 exports.default = MiniMapView;
