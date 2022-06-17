@@ -1,6 +1,7 @@
 import { ChangeView } from "../../tools/Focus";
 import { BaseMenu } from "../BaseMenu";
 import GameBoard from "../GameBoard";
+import PlayerInfoView from "./PlayerInfoView";
 
 export default class PlayerMainView extends BaseMenu {
 private _board: GameBoard
@@ -41,6 +42,7 @@ Keyboard(key: KeyboardEvent): void {
 
 private backToPreviousView() {
     ChangeView(this._board)
+    this.say("zamykam menu postaci")
 }
 
 private armament() {
@@ -52,7 +54,7 @@ private equipment() {
 }
 
 private playerInfo() {
-    //menu informacji o postaci - parametry, hp, exp, punkty skill i tak dalej
+    ChangeView(new PlayerInfoView(this))
 }
 
 private skills() {
