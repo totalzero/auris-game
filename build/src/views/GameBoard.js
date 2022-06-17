@@ -10,6 +10,7 @@ const ContextMenuFactory_1 = __importDefault(require("./ContextMenu/ContextMenuF
 const Player_1 = __importDefault(require("../std/Player"));
 const MiniMapView_1 = __importDefault(require("./MiniMapView"));
 const ExitsMenu_1 = __importDefault(require("./ExitsMenu"));
+const PlayerMainView_1 = __importDefault(require("./PlayerViews/PlayerMainView"));
 class GameBoard extends BaseView_1.default {
     constructor() {
         super();
@@ -93,6 +94,9 @@ class GameBoard extends BaseView_1.default {
     }
     Keyboard(key) {
         switch (key.key) {
+            case "p":
+                this.openPlayerMenu();
+                break;
             case "e":
                 this.openExitsMenu();
                 break;
@@ -147,6 +151,9 @@ Obiekty: ${this._objects.length}`;
     }
     openExitsMenu() {
         (0, Focus_1.ChangeView)(new ExitsMenu_1.default(this));
+    }
+    openPlayerMenu() {
+        (0, Focus_1.ChangeView)(new PlayerMainView_1.default(this));
     }
 }
 exports.default = GameBoard;
