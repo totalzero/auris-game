@@ -4,12 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Focus_1 = require("../../tools/Focus");
-const BaseMenu_1 = require("../BaseMenu");
+const BasePlayerMenuView_1 = __importDefault(require("./BasePlayerMenuView"));
 const PlayerInfoView_1 = __importDefault(require("./PlayerInfoView"));
-class PlayerMainView extends BaseMenu_1.BaseMenu {
+class PlayerMainView extends BasePlayerMenuView_1.default {
     constructor(view) {
-        super();
-        this._board = view;
+        super(view);
+        this._menuClose = "zamykam menu";
         this._options = [
             ["Informacje", () => {
                     this.playerInfo();
@@ -25,20 +25,6 @@ class PlayerMainView extends BaseMenu_1.BaseMenu {
                 }]
         ];
         this.say("menu postaci");
-    }
-    Keyboard(key) {
-        switch (key.key) {
-            case "Escape":
-                this.backToPreviousView();
-                break;
-            default:
-                super.Keyboard(key);
-                break;
-        }
-    }
-    backToPreviousView() {
-        (0, Focus_1.ChangeView)(this._board);
-        this.say("zamykam menu postaci");
     }
     armament() {
         //menu uzbrojenia, czyli player.slots

@@ -1,16 +1,16 @@
 import Player from "../../std/Player";
 import { ChangeView } from "../../tools/Focus";
-import { BaseMenu } from "../BaseMenu";
+import BaseView from "../BaseView";
+import BasePlayerMenuView from "./BasePlayerMenuView";
 import PlayerMainView from "./PlayerMainView";
 
-export default class PlayerInfoView extends BaseMenu {
+export default class PlayerInfoView extends BasePlayerMenuView {
 
-private _previousView: PlayerMainView
 
- constructor(view: PlayerMainView)    {
-     super()
-     this._previousView = view
 
+ constructor(view: BaseView)    {
+     super(view)
+     
  this._options = [
      [`Poziom: ${Player.Instance!.Level}`, () => {}],
 [`punkty doświadczenia: ${Player!.Instance?.Experience}`, () => {}],
@@ -23,21 +23,5 @@ private _previousView: PlayerMainView
  this.say("informacje o postaci")
  }
 
-Keyboard(key: KeyboardEvent): void {
-    switch (key.key) {
-        case "Escape":
-            this.backToPreviousView()
-            break;
-    
-        default:
-            super.Keyboard(key)
-            break;
-    }
-}
-
-private backToPreviousView() {
-    ChangeView(this._previousView)
-    this.say("powrót")
-}
 
 }

@@ -1,14 +1,13 @@
 import { ChangeView } from "../../tools/Focus";
-import { BaseMenu } from "../BaseMenu";
+import BaseView from "../BaseView";
 import GameBoard from "../GameBoard";
+import BasePlayerMenuView from "./BasePlayerMenuView";
 import PlayerInfoView from "./PlayerInfoView";
 
-export default class PlayerMainView extends BaseMenu {
-private _board: GameBoard
-
-constructor(view: GameBoard) {
-    super()
-    this._board = view
+export default class PlayerMainView extends BasePlayerMenuView {
+constructor(view: BaseView) {
+    super(view)
+this._menuClose = "zamykam menu"
 
 this._options = [
     ["Informacje", () => {
@@ -28,22 +27,6 @@ this._options = [
     this.say("menu postaci")
 }
 
-Keyboard(key: KeyboardEvent): void {
-    switch (key.key) {
-        case "Escape":
-            this.backToPreviousView()
-            break;
-    
-        default:
-            super.Keyboard(key)
-            break;
-    }
-}
-
-private backToPreviousView() {
-    ChangeView(this._board)
-    this.say("zamykam menu postaci")
-}
 
 private armament() {
     //menu uzbrojenia, czyli player.slots
