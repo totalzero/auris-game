@@ -2,6 +2,8 @@ import { ChangeView } from "../../tools/Focus";
 import BaseView from "../BaseView";
 import GameBoard from "../GameBoard";
 import BasePlayerMenuView from "./BasePlayerMenuView";
+import PlayerArmamentView from "./PlayerArmamentView";
+import PlayerEquipmentView from "./PlayerEquipmentView";
 import PlayerInfoView from "./PlayerInfoView";
 
 export default class PlayerMainView extends BasePlayerMenuView {
@@ -29,11 +31,11 @@ this._options = [
 
 
 private armament() {
-    //menu uzbrojenia, czyli player.slots
+ChangeView(new PlayerArmamentView(this))
 }
 
 private equipment() {
-    //menu ekwipunku
+    ChangeView(new PlayerEquipmentView(this))
 }
 
 private playerInfo() {

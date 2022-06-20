@@ -10,9 +10,10 @@ class ItemContextMenu extends BaseContextMenu_1.default {
         super(view, obj);
         this._options = [
             ["podnieś", () => {
-                    var _a, _b;
+                    var _a, _b, _c;
                     if (this._obj.canPickup) {
                         (_b = (_a = Player_1.default.Instance) === null || _a === void 0 ? void 0 : _a.Room) === null || _b === void 0 ? void 0 : _b.removeObject(this._obj);
+                        (_c = Player_1.default.Instance) === null || _c === void 0 ? void 0 : _c.addEquipment(this._obj);
                         this.backToPreviousView();
                     }
                     else {

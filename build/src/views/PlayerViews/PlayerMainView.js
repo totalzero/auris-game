@@ -5,6 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Focus_1 = require("../../tools/Focus");
 const BasePlayerMenuView_1 = __importDefault(require("./BasePlayerMenuView"));
+const PlayerArmamentView_1 = __importDefault(require("./PlayerArmamentView"));
+const PlayerEquipmentView_1 = __importDefault(require("./PlayerEquipmentView"));
 const PlayerInfoView_1 = __importDefault(require("./PlayerInfoView"));
 class PlayerMainView extends BasePlayerMenuView_1.default {
     constructor(view) {
@@ -27,10 +29,10 @@ class PlayerMainView extends BasePlayerMenuView_1.default {
         this.say("menu postaci");
     }
     armament() {
-        //menu uzbrojenia, czyli player.slots
+        (0, Focus_1.ChangeView)(new PlayerArmamentView_1.default(this));
     }
     equipment() {
-        //menu ekwipunku
+        (0, Focus_1.ChangeView)(new PlayerEquipmentView_1.default(this));
     }
     playerInfo() {
         (0, Focus_1.ChangeView)(new PlayerInfoView_1.default(this));
