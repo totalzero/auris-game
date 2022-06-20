@@ -72,12 +72,13 @@ test('set player.room', () => {
 })
 
 test('after initialisation player should be empty skills', () => {
-    expect(newPlayer().Skills.skill1).toBeUndefined()
+    expect(newPlayer().Skills.length).toBe(0)
 })
-
+/*
 test('set new skill to player.skills', () => {
     const skil = newSkill()
     const player = newPlayer()
     player.Skills.skill1 = skil
     expect(player.Skills.skill1).toBe(skil)
 })
+*/

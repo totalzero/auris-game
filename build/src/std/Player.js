@@ -13,7 +13,7 @@ class Player extends Mobile_1.default {
         this._maxHP = 100;
         this._money = 0;
         this._slots = {};
-        this._skills = {};
+        this._skills = [];
         this.Respawn = false;
         Player.Instance = this;
     }

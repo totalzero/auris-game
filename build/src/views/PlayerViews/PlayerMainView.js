@@ -8,6 +8,7 @@ const BasePlayerMenuView_1 = __importDefault(require("./BasePlayerMenuView"));
 const PlayerArmamentView_1 = __importDefault(require("./PlayerArmamentView"));
 const PlayerEquipmentView_1 = __importDefault(require("./PlayerEquipmentView"));
 const PlayerInfoView_1 = __importDefault(require("./PlayerInfoView"));
+const PlayerSkillsView_1 = __importDefault(require("./PlayerSkillsView"));
 class PlayerMainView extends BasePlayerMenuView_1.default {
     constructor(view) {
         super(view);
@@ -38,7 +39,7 @@ class PlayerMainView extends BasePlayerMenuView_1.default {
         (0, Focus_1.ChangeView)(new PlayerInfoView_1.default(this));
     }
     skills() {
-        //menu umiejetnosci - do przemyslenia
+        (0, Focus_1.ChangeView)(new PlayerSkillsView_1.default(this));
     }
 }
 exports.default = PlayerMainView;

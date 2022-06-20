@@ -5,6 +5,7 @@ import BasePlayerMenuView from "./BasePlayerMenuView";
 import PlayerArmamentView from "./PlayerArmamentView";
 import PlayerEquipmentView from "./PlayerEquipmentView";
 import PlayerInfoView from "./PlayerInfoView";
+import PlayerSkillsView from "./PlayerSkillsView";
 
 export default class PlayerMainView extends BasePlayerMenuView {
 constructor(view: BaseView) {
@@ -43,7 +44,7 @@ private playerInfo() {
 }
 
 private skills() {
-    //menu umiejetnosci - do przemyslenia
+    ChangeView(new PlayerSkillsView(this))
 }
 
 }

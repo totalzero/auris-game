@@ -15,7 +15,7 @@ export default class Player extends Mobile {
 protected _money: number = 0
 protected _slots: Slots = {}
 protected _actuallRoom?: Room
-protected _skills: Skills = {}
+protected _skills: Skill[] = []
 
 constructor() {
     super()
@@ -79,7 +79,7 @@ set Room(room: Room | undefined) {
     this._actuallRoom = room
 }
 
-get Skills(): Skills {
+get Skills(): Skill[] {
     return this._skills
 }
 
@@ -97,10 +97,3 @@ interface Slots {
     
 }
 
-interface Skills {
-    "skill1"?: Skill,
-    "skill2"?: Skill,
-"skill3"?: Skill,
-"skill4"? : Skill,
-"skill5"? : Skill
-}
