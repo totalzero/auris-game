@@ -1,6 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Speech {
+    static stop() {
+        Speech._synt.cancel();
+    }
     static say(text) {
         Speech._utter.text = text;
         Speech._utter.rate = Speech._rate;

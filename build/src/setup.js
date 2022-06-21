@@ -30,10 +30,12 @@ const loc1_1 = require("./GameWorld/test/loc1");
 const Player_1 = __importDefault(require("./std/Player"));
 const FOCUS = __importStar(require("./tools/Focus"));
 const GameState_1 = __importDefault(require("./tools/GameState"));
+const speech_1 = __importDefault(require("./tools/speech"));
 const MainMenu_1 = __importDefault(require("./views/MainMenu"));
 const player = new Player_1.default();
 player.Room = GameState_1.default.getRoom(loc1_1.Loc1);
 FOCUS.ChangeView(new MainMenu_1.default());
 window.addEventListener('keydown', (event) => {
+    speech_1.default.stop();
     FOCUS.keyListener(event);
 });

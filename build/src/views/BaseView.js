@@ -9,6 +9,7 @@ class BaseView {
         this.say = speech_1.default.say;
     }
     Keyboard(key) {
+        //Speech.stop() 
     }
 }
 exports.default = BaseView;

@@ -4,7 +4,9 @@ export default class Speech {
  private static _rate: number = 1
  private static _pitch: number= 1
  
-
+static stop() {
+    Speech._synt.cancel()
+}
 
 static say(text: string) {
     Speech._utter.text = text

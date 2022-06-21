@@ -93,6 +93,7 @@ class GameBoard extends BaseView_1.default {
         //new context menu z zapisz main menu i wroc do gry
     }
     Keyboard(key) {
+        super.Keyboard(key);
         switch (key.key) {
             case "p":
                 this.openPlayerMenu();

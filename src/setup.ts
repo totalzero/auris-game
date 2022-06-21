@@ -4,6 +4,7 @@ import { Loc2 } from "./GameWorld/test/loc2"
 import Player from "./std/Player"
 import * as FOCUS from "./tools/Focus"
 import GameState from "./tools/GameState"
+import Speech from "./tools/speech"
 import MainMenu from "./views/MainMenu"
 
 
@@ -13,6 +14,7 @@ player.Room = GameState.getRoom(Loc1)
 
 FOCUS.ChangeView(new MainMenu())
 window.addEventListener('keydown', (event) => {
+  Speech.stop()
   FOCUS.keyListener(event)  
 })
 
