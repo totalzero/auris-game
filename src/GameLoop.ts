@@ -11,11 +11,11 @@ const npc = this.getNpcs()
 for (let element of npc) {
     element.Update()
 }
-}, 1000/60)
+}, 1000)
 
 this._respawnLoop = setInterval(() => {
 Player.Instance?.Room?.Update()
-}, 1000/60)
+}, 1000)
  }
 
  Stop() {

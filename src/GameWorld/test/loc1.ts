@@ -5,6 +5,7 @@ import GameState from "../../tools/GameState";
 
 import { Item1 } from "./item1";
 import { Loc2 } from "./loc2";
+import Mob1 from "./mob1";
 
 export class Loc1 extends Room {
     
@@ -20,7 +21,7 @@ this.Floors = [
 ]
 this.Exits.north = Loc2
 this.AddObject(Item1)
-
+this.AddObject(new Mob1())
 }
 }
 

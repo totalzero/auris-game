@@ -95,7 +95,7 @@ private exit() {
 }
 
  Keyboard(key: KeyboardEvent): void {
-     super.Keyboard(key)
+     
  switch (key.key) {
 
 case "p":

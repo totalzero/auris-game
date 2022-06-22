@@ -1,4 +1,5 @@
 import { randomBoolean, randomInteger } from "../random";
+import Speech from "../tools/speech";
 
 import GameObj from "./GameObj";
 import Item from "./Item";
@@ -74,6 +75,7 @@ goWest() {
 }
 
 Update(){
+    Speech.say("nastepuje update moba")
 if (randomBoolean()) {
     switch (randomInteger(1, 4)) {
         case 1:
@@ -95,6 +97,7 @@ if (randomBoolean()) {
         default:
             break;
     }
+    Speech.say(`${this.Name} przemieszcza się`)
 }
 }
 

@@ -1,4 +1,6 @@
+import GameLoop from "../GameLoop";
 import Room from "../obj/Room";
+import Player from "../std/Player";
 
 /**
  * class stores information and game object
@@ -6,6 +8,7 @@ import Room from "../obj/Room";
 
 export default class GameState {
      private static _rooms: Map<Function, Room> = new Map<Function, Room>()
+private static _loop: GameLoop = new GameLoop()
 
 /**
  * function creates and stores Room object
@@ -23,4 +26,25 @@ GameState._rooms.set(fnc, rm)
 return rm
 }
     }
+
+/**
+ * start game loop
+ */
+
+static startLoop() {
+setInterval(function () {
+for (let i of Player!.Instance!.Room!.Objects) {
+    i.update()
+}
+}, 1000)
+}
+
+/**
+ * stop game loop
+ */
+
+static loopStop() {
+GameState._loop.Stop()
+}
+
 }

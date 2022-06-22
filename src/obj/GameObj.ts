@@ -89,5 +89,7 @@ get canPickup(): boolean {
 set canPickup(pickup: boolean) {
     this._canPickup = pickup
 }
+
+update(): void {}
 }
 
