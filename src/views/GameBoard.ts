@@ -31,6 +31,7 @@ this._objIter = new Iterator(this._objects)
 }
 
 private cursorUp() {
+    this._selectedObject = undefined
     if (this._cursor.y <= 1) {
 this._cursor.y += 1
 this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
@@ -41,6 +42,7 @@ this.say("tam nie ma nic")
 }
 
 private cursorDown() {
+    this._selectedObject = undefined
     if (this._cursor.y > 0) {
     this._cursor.y -= 1
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
@@ -51,6 +53,7 @@ this.say("tam nie ma nic")
     }
 
 private cursorLeft() {
+    this._selectedObject = undefined
     if (this._cursor.x > 0) {
     this._cursor.x -= 1
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
@@ -61,12 +64,13 @@ private cursorLeft() {
 }
 
 private cursorRight() {
+    this._selectedObject = undefined
     if (this._cursor.x <= 1) {
     this._cursor.x += 1
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
     } else {
-this.say("tam nic nie ma")
+this.say("tam nie ma nic")
 }
     }
 
@@ -86,8 +90,13 @@ if (this._objIter.HasNext()) {
 }
 
 private execute() {
-if (this._selectedObject)
+if (this._selectedObject) {
 ChangeView(createContextMenu(this, this._selectedObject)!)
+} else {
+    Player!.Instance!.X = this._cursor.x
+    Player!.Instance!.Y = this._cursor.y
+    this.say(`przechodzisz na pole X: ${this._cursor.x}, y: ${this._cursor.y}`)
+}
 }
 
 private exit() {
@@ -95,7 +104,7 @@ private exit() {
 }
 
  Keyboard(key: KeyboardEvent): void {
-     
+ 
  switch (key.key) {
 
 case "p":
