@@ -1,5 +1,6 @@
-import Mobile from "./obj/Mobile";
-import { randomInteger } from "./random";
+import Mobile from "../obj/Mobile"
+import { randomInteger } from "../random"
+
 
 export default function Attack(mob1: Mobile, mob2: Mobile) {
 blow(mob1, mob2)

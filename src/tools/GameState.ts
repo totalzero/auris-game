@@ -31,12 +31,12 @@ return rm
  * start game loop
  */
 
-static startLoop() {
-setInterval(function () {
+static startUpdate() {
+
 for (let i of Player!.Instance!.Room!.Objects) {
     i.update()
 }
-}, 1000)
+
 }
 
 /**

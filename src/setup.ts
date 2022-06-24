@@ -10,7 +10,7 @@ import MainMenu from "./views/MainMenu"
 
 const player = new Player()
 player.Room = GameState.getRoom(Loc1)
-
+player.Name = "gracz"
 
 FOCUS.ChangeView(new MainMenu())
 window.addEventListener('keydown', (event) => {

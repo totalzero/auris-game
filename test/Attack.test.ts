@@ -1,4 +1,4 @@
-import Attack from "../src/Attack";
+import Attack from "../src/tools/Attack";
 import Mobile from "../src/obj/Mobile";
 
 function newMobile(): Mobile {

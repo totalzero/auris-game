@@ -13,7 +13,7 @@ export default class MainMenu extends BaseMenu {
 this._options= [
     ["Graj", () => {
         this.say("uruchamiam gre")
-        GameState.startLoop
+        
         ChangeView(new GameBoard())
         
     }],

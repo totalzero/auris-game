@@ -8,6 +8,7 @@ import Player from "../std/Player";
 import MiniMapView from "./MiniMapView";
 import ExitsMenu from "./ExitsMenu";
 import PlayerMainView from "./PlayerViews/PlayerMainView";
+import ControlPlayer from "../tools/ControlPlayer";
 
 export default class GameBoard extends BaseView {
     private _location?: Room 
@@ -93,9 +94,7 @@ private execute() {
 if (this._selectedObject) {
 ChangeView(createContextMenu(this, this._selectedObject)!)
 } else {
-    Player!.Instance!.X = this._cursor.x
-    Player!.Instance!.Y = this._cursor.y
-    this.say(`przechodzisz na pole X: ${this._cursor.x}, y: ${this._cursor.y}`)
+    this.say(new ControlPlayer().Move(this._cursor.x, this._cursor.y))
 }
 }
 

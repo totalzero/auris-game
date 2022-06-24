@@ -77,6 +77,7 @@ get Room(): Room | undefined {
 
 set Room(room: Room | undefined) {
     this._actuallRoom = room
+    this._actuallRoom?.AddObject(this)
 }
 
 get Skills(): Skill[] {
