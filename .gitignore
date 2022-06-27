@@ -49,6 +49,7 @@ jspm_packages/
 build/src
 build/test
 build/aurisbin.js
+
 note
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/

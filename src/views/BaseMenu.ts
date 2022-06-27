@@ -5,6 +5,9 @@ export  class BaseMenu extends BaseView {
     protected _menuPos: number = -1
     protected _execute: Function | undefined = undefined
 protected _options: menuItem[]  = []
+protected _soundOption = new Audio("sounds/menu/select-option.mp3")
+protected _soundEnter = new Audio("sounds/menu/enter-option.mp3")
+
 
  Keyboard(key: KeyboardEvent): void {
  switch (key.key) {
@@ -28,6 +31,7 @@ this._run()
 
 protected _cursor(position: menuItem) {
     this._execute = position[1]
+    this._soundOption.play()
     Speech.say(position[0])
 }
 
@@ -46,8 +50,10 @@ this._cursor(this._options[this._menuPos])
  }
 
  protected _run() {
-     if (this._execute !=  undefined)
+     if (this._execute !=  undefined) {
+         this._soundEnter.play()
 this._execute()
+     }
  }
 }
 
