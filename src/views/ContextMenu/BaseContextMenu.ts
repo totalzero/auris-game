@@ -1,5 +1,6 @@
 import GameObj from "../../obj/GameObj";
 import { ChangeView } from "../../tools/Focus";
+import SoundManager from "../../tools/SoundManager";
 import { BaseMenu, menuItem } from "../BaseMenu";
 import BaseView from "../BaseView";
 
@@ -33,6 +34,7 @@ protected _run(): void {
 
  protected backToPreviousView() {
      this.say("zamykam menu")
+     SoundManager.Effect.Menu.CloseMenu.play()
      ChangeView(this._previousView)
  }
 

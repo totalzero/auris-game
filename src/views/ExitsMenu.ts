@@ -1,6 +1,7 @@
 import Player from "../std/Player";
 import { ChangeView } from "../tools/Focus";
 import GameState from "../tools/GameState";
+import SoundManager from "../tools/SoundManager";
 import { BaseMenu, menuItem } from "./BaseMenu";
 import GameBoard from "./GameBoard";
 
@@ -62,6 +63,7 @@ protected _run(): void {
 
     private BackToPreviousView() {
         ChangeView(this._previousView)
+        SoundManager.Effect.Menu.CloseMenu.play()
         this.say("zamykam menu")
     }
 

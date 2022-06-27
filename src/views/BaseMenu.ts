@@ -1,3 +1,4 @@
+import SoundManager from "../tools/SoundManager"
 import Speech from "../tools/speech"
 import BaseView from "./BaseView"
 
@@ -5,8 +6,8 @@ export  class BaseMenu extends BaseView {
     protected _menuPos: number = -1
     protected _execute: Function | undefined = undefined
 protected _options: menuItem[]  = []
-protected _soundOption = new Audio("sounds/menu/select-option.mp3")
-protected _soundEnter = new Audio("sounds/menu/enter-option.mp3")
+
+
 
 
  Keyboard(key: KeyboardEvent): void {
@@ -31,7 +32,7 @@ this._run()
 
 protected _cursor(position: menuItem) {
     this._execute = position[1]
-    this._soundOption.play()
+    SoundManager.Effect.Menu.MoveFocus.play()
     Speech.say(position[0])
 }
 
@@ -51,7 +52,7 @@ this._cursor(this._options[this._menuPos])
 
  protected _run() {
      if (this._execute !=  undefined) {
-         this._soundEnter.play()
+         SoundManager.Effect.Menu.EnterOption.play()
 this._execute()
      }
  }

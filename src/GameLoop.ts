@@ -9,7 +9,7 @@ export default class GameLoop {
 this._mobileLoop = setInterval(() => {
 const npc = this.getNpcs()
 for (let element of npc) {
-    element.Update()
+    element.update()
 }
 }, 1000)
 

@@ -74,7 +74,7 @@ goWest() {
  this.X -= 1
 }
 
-Update(){
+update(){
     Speech.say("nastepuje update moba")
 if (randomBoolean()) {
     switch (randomInteger(1, 4)) {

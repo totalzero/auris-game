@@ -1,6 +1,7 @@
 import { BaseMenu } from "../BaseMenu";
 import BaseView from "../BaseView";
 import { ChangeView } from "../../tools/Focus";
+import SoundManager from "../../tools/SoundManager";
 
 export default class BasePlayerMenuView extends BaseMenu {
  protected _previousView: BaseView   
@@ -24,6 +25,7 @@ protected _menuClose: string = "powrót"
 }
 
 protected backToPreviousView() {
+    SoundManager.Effect.Menu.CloseMenu.play()
     ChangeView(this._previousView)
     this.say(this._menuClose)
 }
