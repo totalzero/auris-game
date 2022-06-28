@@ -5,7 +5,8 @@ private effect = {
     "Menu": {
         MoveFocus: new Audio("sounds/menu/select-option.mp3"),
         EnterOption: new Audio("sounds/menu/enter-option.mp3"),
-        CloseMenu: new Audio("sounds/menu/close-menu.mp3")
+        CloseMenu: new Audio("sounds/menu/close-menu.mp3"),
+        Nothing: new Audio("sounds/menu/nothing.mp3"),
     },
     "Floors": {
 

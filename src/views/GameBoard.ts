@@ -9,6 +9,7 @@ import MiniMapView from "./MiniMapView";
 import ExitsMenu from "./ExitsMenu";
 import PlayerMainView from "./PlayerViews/PlayerMainView";
 import ControlPlayer from "../tools/ControlPlayer";
+import SoundManager from "../tools/SoundManager";
 
 export default class GameBoard extends BaseView {
     private _location?: Room 
@@ -38,7 +39,7 @@ this._cursor.y += 1
 this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
 this.cursor()
     } else {
-this.say("tam nie ma nic")
+SoundManager.Effect.Menu.Nothing.play()
     }
 }
 
@@ -49,7 +50,7 @@ private cursorDown() {
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
     } else {
-this.say("tam nie ma nic")
+        SoundManager.Effect.Menu.Nothing.play()
 }
     }
 
@@ -60,7 +61,7 @@ private cursorLeft() {
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
     } else {
-        this.say("tam nie ma nic")        
+        SoundManager.Effect.Menu.Nothing.play()
 }
 }
 
@@ -71,7 +72,7 @@ private cursorRight() {
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
     } else {
-this.say("tam nie ma nic")
+        SoundManager.Effect.Menu.Nothing.play()
 }
     }
 
