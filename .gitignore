@@ -49,6 +49,7 @@ jspm_packages/
 build/src
 build/test
 build/aurisbin.js
+build/sounds/samples
 
 note
 # Snowpack dependency directory (https://snowpack.dev/)
