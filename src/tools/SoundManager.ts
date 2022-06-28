@@ -9,7 +9,10 @@ private effect = {
         Nothing: new Audio("sounds/menu/nothing.mp3"),
     },
     "Floors": {
-
+"GRASS": new Audio("sounds/floors/grass.ogg"),
+"STONE": new Audio("sounds/floors/stone.ogg"),
+"WATER": new Audio("sounds/floors/water.ogg"),
+"NONE": new Audio("sounds/floors/none.ogg")
     },
 }
 

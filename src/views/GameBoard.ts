@@ -28,6 +28,7 @@ private _objIter: Iterator = new Iterator([])
 
 private cursor()  {
 this.say(this._collectionSummary())
+this.getSoundFloors().play()
 if (this._objects != undefined)
 this._objIter = new Iterator(this._objects)
 }
@@ -181,6 +182,11 @@ private openExitsMenu() {
 private openPlayerMenu() {
     ChangeView(new PlayerMainView(this))
 }
+
+private getSoundFloors(): HTMLAudioElement  {
+    return SoundManager.Effect.Floors[this._location!.getFloor(this._cursor.x, this._cursor.y)]
+}
+
 
 }
 
