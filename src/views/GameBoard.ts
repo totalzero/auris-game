@@ -10,6 +10,7 @@ import ExitsMenu from "./ExitsMenu";
 import PlayerMainView from "./PlayerViews/PlayerMainView";
 import ControlPlayer from "../tools/ControlPlayer";
 import SoundManager from "../tools/SoundManager";
+import GameState from "../tools/GameState";
 
 export default class GameBoard extends BaseView {
     private _location?: Room 
@@ -97,6 +98,7 @@ if (this._selectedObject) {
 ChangeView(createContextMenu(this, this._selectedObject)!)
 } else {
     this.say(new ControlPlayer().Move(this._cursor.x, this._cursor.y))
+    GameState.startUpdate()
 }
 }
 

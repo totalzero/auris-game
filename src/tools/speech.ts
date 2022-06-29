@@ -9,7 +9,8 @@ static stop() {
 }
 
 static say(text: string) {
-    Speech._utter.text = text
+
+    Speech._utter = new SpeechSynthesisUtterance(text)
     Speech._utter.rate = Speech._rate
     Speech._utter.pitch = Speech._pitch
 

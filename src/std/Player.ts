@@ -84,7 +84,7 @@ get Skills(): Skill[] {
     return this._skills
 }
 
-Update(): void {
+update(): void {
  if (this.SkillPoints < this.MaxSkillPoints)   
  this.SkillPoints += 1
 }
