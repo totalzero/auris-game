@@ -13,6 +13,8 @@ export default class Player extends Mobile {
  protected _maxSkillPoints: number = 100   
  protected _maxHP:number = 100
 protected _money: number = 0
+protected _actionPoints: number = 3
+protected _maxActionPoints: number = 3
 protected _slots: Slots = {}
 protected _actuallRoom?: Room
 protected _skills: Skill[] = []
@@ -76,6 +78,7 @@ get Room(): Room | undefined {
 }
 
 set Room(room: Room | undefined) {
+    this._actuallRoom?.removeObject(this)
     this._actuallRoom = room
     this._actuallRoom?.AddObject(this)
 }
@@ -84,9 +87,61 @@ get Skills(): Skill[] {
     return this._skills
 }
 
+get ActionPoints(): number {
+    return this._actionPoints
+}
+
+set ActionPoints(points) {
+    this._actionPoints = points
+}
+
+get maxActionPoints(): number {
+    return this._maxActionPoints
+}
+
+set maxActionPoints(points) {
+    this.maxActionPoints = points
+}
+
+CombatDistance(): number {
+    if (this.Slots.weapon) {
+        return this.Slots.weapon.Distance
+    } else {
+        return 1
+    }
+}
+
+get Offensive(): number {
+    let off = this.Level * 10
+off += this.Slots.armor?.Offensive || 0
+off += this.Slots.helmet?.Offensive || 0
+off += this.Slots.shoes?.Offensive || 0
+off += this.Slots.weapon?.Offensive || 0
+this._ofens = off
+    return this._ofens
+}
+
+set Offensive(ofens: number) {
+    this._ofens = ofens
+}
+
+get Defensive(): number {
+    let def  = this.Level * 10
+def += this.Slots.armor?.Defensive || 0
+def += this.Slots.helmet?.Defensive || 0
+def += this.Slots.shoes?.Defensive || 0
+def += this.Slots.weapon?.Defensive || 0
+this._defens += def
+    return this._defens
+}
+
+set Defensive(def: number) {
+     this._defens = def
+}
+
+
 update(): void {
- if (this.SkillPoints < this.MaxSkillPoints)   
- this.SkillPoints += 1
+this.ActionPoints += this.maxActionPoints
 }
 }
 

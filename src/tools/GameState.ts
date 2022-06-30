@@ -32,7 +32,7 @@ return rm
  */
 
 static startUpdate() {
-
+//zastanowic sie nad przerobieniem jako samo update actual room - room wywoluje update wszystkich swoich obiektow.
 for (let i of Player!.Instance!.Room!.Objects) {
     i.update()
 }

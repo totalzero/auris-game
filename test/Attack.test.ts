@@ -1,6 +1,6 @@
 import Attack from "../src/tools/Attack";
 import Mobile from "../src/obj/Mobile";
-
+/*
 function newMobile(): Mobile {
     return new Mobile()
 }
@@ -19,3 +19,4 @@ test('testing attack with mob1 offensive  100 and mob2 defensive 50', () => {
 
 })
 
+*/

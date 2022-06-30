@@ -54,28 +54,32 @@ goNorth() {
     if (this.Move)
 if (this.Y < 2)
 this.Y += 1
+Speech.say(`${this.Name} przemieszcza się na północ`)
 }
 
 goSouth() {
     if (this.Move)
 if (this.Y > 0)
 this.Y -= 1
+Speech.say(`${this.Name} przemieszcza się na południe`)
 }
 
 goEast() {
     if (this.Move)
 if (this.X < 2)
 this.X += 1
+Speech.say(`${this.Name} przemieszcza się na wschód`)
 }
 
 goWest() {
     if (this.Move)
  if (this.X > 0)   
  this.X -= 1
+ Speech.say(`${this.Name} przemieszcza się na zachód`)
 }
 
 update(){
-    Speech.say("nastepuje update moba")
+    //Speech.say("nastepuje update moba")
 if (randomBoolean()) {
     switch (randomInteger(1, 4)) {
         case 1:
@@ -97,7 +101,7 @@ if (randomBoolean()) {
         default:
             break;
     }
-    Speech.say(`${this.Name} przemieszcza się`)
+    
 }
 }
 

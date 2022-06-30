@@ -13,6 +13,8 @@ SoundManager.init()
 const player = new Player()
 player.Room = GameState.getRoom(Loc1)
 player.Name = "gracz"
+player.Offensive = 10
+player.Defensive = 50
 
 FOCUS.ChangeView(new MainMenu())
 window.addEventListener('keydown', (event) => {

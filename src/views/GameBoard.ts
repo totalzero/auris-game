@@ -98,7 +98,7 @@ if (this._selectedObject) {
 ChangeView(createContextMenu(this, this._selectedObject)!)
 } else {
     this.say(new ControlPlayer().Move(this._cursor.x, this._cursor.y))
-    GameState.startUpdate()
+    
 }
 }
 

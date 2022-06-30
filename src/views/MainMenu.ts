@@ -3,7 +3,7 @@ import Speech from "../tools/speech"
 import { ChangeView } from "../tools/Focus"
 import Options from "./Options/Options"
 import GameBoard from "./GameBoard"
-import GameLoop from "../GameLoop"
+
 import GameState from "../tools/GameState"
 
 export default class MainMenu extends BaseMenu {
