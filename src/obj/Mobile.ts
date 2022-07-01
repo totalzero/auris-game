@@ -9,6 +9,7 @@ export default class Mobile extends GameObj {
 protected _equipment: Item[] = []
 protected _hp: number = 100
 protected _move: boolean = true
+protected _combatDistance: number = 0
 
 constructor() {
     super()
@@ -109,6 +110,14 @@ getInfo(): String {
 return `${this.Name}.
 ${this.Description}.
 level: ${this.Level}`    
+}
+
+get CombatDistance(): number {
+    return this._combatDistance
+}
+
+set CombatDistance(dis) {
+    this._combatDistance = dis
 }
 
 }

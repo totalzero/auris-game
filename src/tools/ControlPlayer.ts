@@ -14,9 +14,13 @@ export default class ControlPlayer {
 
 Move(x: number, y: number): string {
 const desc = this.movingDescription(x, y)
+if (this.distanceFromPlayer(x, y) === 0) {
+return ""
+} else {
 this.goPoint(x, y)
 if (this._player.ActionPoints <= 0) {
 GameState.startUpdate()
+}
 }
 return desc
 }
@@ -33,15 +37,9 @@ return true
 
 Combat(mob: Monster): string {
     let combatInfo = ''
-    const xp = this._player.X
-    const yp = this._player.Y
+const distance = this.distanceFromPlayer(mob.X, mob.Y)
 
-const distance = function () {
-    const x = mob.X - xp
-    const y = mob.Y - yp
-    return (Math.sqrt(x * x) + Math.sqrt(y * y))
-}()
-const isDistance = distance <= this._player.CombatDistance()
+const isDistance = distance <= this._player.CombatDistance
 const isHit = randomBoolean()
 const pOffens = this._player.Offensive
 const damage = function () {
@@ -67,14 +65,8 @@ return combatInfo
 }
 
 private goPoint(x: number, y: number) {
-    const px = this._player.X   
-    const py = this._player.Y
-   
-   const distance = ( function () {
-   const xx = x - px
-   const yy = y - py
-   return Math.sqrt(xx * xx) + Math.sqrt(yy * yy)
-   }())
+const distance = this.distanceFromPlayer(x, y)   
+
 if (this._player.ActionPoints >= distance)    {
 this._player.X = x
 this._player.Y = y
@@ -86,11 +78,7 @@ private movingDescription(x: number, y: number): string {
  const px = this._player.X   
  const py = this._player.Y
 
-const distance = ( function () {
-const xx = x - px
-const yy = y - py
-return Math.sqrt(xx * xx) + Math.sqrt(yy * yy)
-}())
+const distance = this.distanceFromPlayer(x, y)
 if (this._player.ActionPoints < distance) {
 return "za mało punktów ruchu"
 }
@@ -142,6 +130,10 @@ const result = steps() + direction()
  return result 
 }
 
-
+private distanceFromPlayer(x: number, y: number): number {
+const X = this._player.X - x
+const Y = this._player.Y - y
+return Math.sqrt(X * X) + Math.sqrt(Y * Y)
+}
 
 }

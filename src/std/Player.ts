@@ -22,6 +22,7 @@ protected _skills: Skill[] = []
 constructor() {
     super()
     this.Respawn = false
+    this._combatDistance = 0
     Player.Instance = this
 }
 
@@ -101,14 +102,6 @@ get maxActionPoints(): number {
 
 set maxActionPoints(points) {
     this.maxActionPoints = points
-}
-
-CombatDistance(): number {
-    if (this.Slots.weapon) {
-        return this.Slots.weapon.Distance
-    } else {
-        return 1
-    }
 }
 
 get Offensive(): number {
