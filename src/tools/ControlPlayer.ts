@@ -4,6 +4,8 @@ import Monster from "../std/Monster";
 import Player from "../std/Player";
 import Attack from "./Attack";
 import GameState from "./GameState";
+import SoundManager from "./SoundManager";
+import Speech from "./speech";
 
 export default class ControlPlayer {
  private _player: Player   
@@ -12,17 +14,18 @@ export default class ControlPlayer {
      this._player = Player!.Instance!
  }
 
-Move(x: number, y: number): string {
-const desc = this.movingDescription(x, y)
+Move(x: number, y: number) {
+
 if (this.distanceFromPlayer(x, y) === 0) {
-return ""
+Speech.say("")
 } else {
+this.playSteps(this.distanceFromPlayer(x, y))
+Speech.say(this.movingDescription(x, y))
 this.goPoint(x, y)
-if (this._player.ActionPoints <= 0) {
 GameState.startUpdate()
+
 }
-}
-return desc
+
 }
 
 getItem(item: Item): boolean {
@@ -40,7 +43,12 @@ if (this.distanceFromPlayer(mob.X, mob.Y) > this._player.CombatDistance)     {
 return false
 }  else {
 mob.Aggresive = true
-return Attack(this._player, mob)
+const attackResult = Attack(this._player, mob)
+if (attackResult) {
+    GameState.startUpdate()
+}
+
+return attackResult
 }
 }
 
@@ -114,6 +122,25 @@ private distanceFromPlayer(x: number, y: number): number {
 const X = this._player.X - x
 const Y = this._player.Y - y
 return Math.sqrt(X * X) + Math.sqrt(Y * Y)
+}
+
+private playSteps(step: number) {
+    let arSteps: HTMLAudioElement[] = []
+
+    for(let i = 0; i < step; i++) {
+        arSteps.push(SoundManager.Effect.Steps[i])
+    }
+    let currentStep = 0
+
+    const nextStep = function () {
+        if (currentStep < step) {
+                    arSteps[currentStep].addEventListener("ended", nextStep)
+            arSteps[currentStep].play()
+            currentStep ++
+        }
+    }
+arSteps[currentStep].addEventListener("ended", nextStep)
+arSteps[currentStep].play()
 }
 
 }

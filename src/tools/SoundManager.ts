@@ -14,6 +14,18 @@ private effect = {
 "WATER": new Audio("sounds/floors/water.ogg"),
 "NONE": new Audio("sounds/floors/none.ogg")
     },
+    "Steps": [
+new Audio("sounds/steps/1.ogg"),
+ new Audio("sounds/steps/2.ogg"),
+ new Audio("sounds/steps/3.ogg"), new Audio("sounds/steps/4.ogg"),
+ new Audio("sounds/steps/5.ogg"),
+ new Audio("sounds/steps/6.ogg"),
+ new Audio("sounds/steps/7.ogg"),
+ new Audio("sounds/steps/8.ogg"),
+ new Audio("sounds/steps/9.ogg"),
+ new Audio("sounds/steps/10.ogg")
+],
+
 }
 
     private constructor() {

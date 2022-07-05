@@ -9,13 +9,13 @@ const distance = Distance(attacker, opponent)
 
 const isDistance = distance <= attacker.CombatDistance
 const isHit = randomBoolean()
-const pOffens = attacker.Offensive
+
 const damage = function () {
-const dm = pOffens - opponent.Defensive
+const dm = attacker.Offensive - opponent.Defensive
 if (dm > 0) {
     return dm
 } else {
-    return randomInteger(0, 10)
+    return randomInteger(0, 1)
 }
 }()
 

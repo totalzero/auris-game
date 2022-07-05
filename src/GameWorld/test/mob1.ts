@@ -7,5 +7,6 @@ export default class Mob1 extends Monster {
         this.Description = "to jest jakiś tam potwór testowy"
         this.Move = true
  this.X        = 2
+ this.HP = 10
     }
 }

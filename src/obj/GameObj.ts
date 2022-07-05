@@ -3,9 +3,9 @@ export default abstract class GameObj {
 protected _desc: string = ""
 protected _x: number = 0
 protected _y: number = 0
-protected _ofens: number = 0
-protected _defens: number = 0
-protected _level: number = 0
+protected _ofens: number = 1
+protected _defens: number = 1
+protected _level: number = 1
 protected _respawn: boolean = true
 protected _use: any = undefined
 protected _canPickup: boolean = false
