@@ -1,6 +1,7 @@
 
 import Room from "../obj/Room";
 import Player from "../std/Player";
+import Speech from "./speech";
 
 /**
  * class stores information and game object
@@ -32,10 +33,11 @@ return rm
  */
 
 static startUpdate() {
-//zastanowic sie nad przerobieniem jako samo update actual room - room wywoluje update wszystkich swoich obiektow.
+
 for (let i of Player!.Instance!.Room!.Objects) {
     i.update()
 }
+//zastanowic sie nad przerobieniem jako samo update actual room - room wywoluje update wszystkich swoich obiektow.
 
 }
 

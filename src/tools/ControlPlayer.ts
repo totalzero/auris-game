@@ -35,33 +35,13 @@ return true
     }
 }
 
-Combat(mob: Monster): string {
-    let combatInfo = ''
-const distance = this.distanceFromPlayer(mob.X, mob.Y)
-
-const isDistance = distance <= this._player.CombatDistance
-const isHit = randomBoolean()
-const pOffens = this._player.Offensive
-const damage = function () {
-const dm = pOffens - mob.Defensive
-if (dm > 0) {
-    return dm
-} else {
-    return randomInteger(0, 10)
+Combat(mob: Monster): boolean  {
+if (this.distanceFromPlayer(mob.X, mob.Y) > this._player.CombatDistance)     {
+return false
+}  else {
+mob.Aggresive = true
+return Attack(this._player, mob)
 }
-}()
-
-if (isDistance) {
-if (isHit) {
-combatInfo = `atakujesz ${mob.Name}, twój przeciwnik traci ${damage} z ${mob.HP} punktów rzycia`
-mob.HP -= damage
-} else {
-    combatInfo = "nie udało ci się trafić przeciwnika"
-}
-} else {
-    combatInfo = "musisz podejść do przeciwnika"
-}
-return combatInfo
 }
 
 private goPoint(x: number, y: number) {

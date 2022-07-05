@@ -52,58 +52,60 @@ set Move(mv: boolean) {
 }
 
 goNorth() {
-    if (this.Move)
-if (this.Y < 2)
+    if (this.Move) {
+if (this.Y < 2) {
 this.Y += 1
 Speech.say(`${this.Name} przemieszcza się na północ`)
+}
+    }
 }
 
 goSouth() {
     if (this.Move)
-if (this.Y > 0)
+if (this.Y > 0) {
 this.Y -= 1
 Speech.say(`${this.Name} przemieszcza się na południe`)
+}
 }
 
 goEast() {
     if (this.Move)
-if (this.X < 2)
+if (this.X < 2) {
 this.X += 1
 Speech.say(`${this.Name} przemieszcza się na wschód`)
+}
 }
 
 goWest() {
     if (this.Move)
- if (this.X > 0)   
+ if (this.X > 0)    {
  this.X -= 1
  Speech.say(`${this.Name} przemieszcza się na zachód`)
+ }
 }
 
-update(){
-    //Speech.say("nastepuje update moba")
-if (randomBoolean()) {
-    switch (randomInteger(1, 4)) {
-        case 1:
-            this.goNorth()
-            break;
-    
-            case 2:
-                this.goEast()
-                break;
-
-                case 3:
-                    this.goSouth()
-                    break;
-
-                    case 4:
-                        this.goWest()
-                        break;
-                        
-        default:
-            break;
+update(): void {
+    if (this.Move) {
+        this.goPoint(randomInteger(0, 2), randomInteger(0, 2))
     }
-    
 }
+
+protected goPoint(x: number, y: number) {
+    if (this.Y > y) {
+this.goSouth()
+return
+    } else {
+this.goNorth()
+return
+    }
+
+    if (this.X > x) {
+        this.goWest()
+        return
+    } else {
+        this.goEast()
+        return
+    }
 }
 
 getInfo(): String {
