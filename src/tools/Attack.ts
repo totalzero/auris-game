@@ -1,5 +1,6 @@
 import Mobile from "../obj/Mobile"
 import { randomBoolean, randomInteger } from "../random"
+import GameState from "./GameState"
 import Speech from "./speech"
 
 
@@ -21,8 +22,14 @@ if (dm > 0) {
 
 if (isDistance) {
 if (isHit) {
-Speech.say(`${opponent.Name} traci ${damage} z ${opponent.HP} punktów rzycia`)
+    GameState.Hit(opponent)
+    Speech.say(`${opponent.Name} traci ${damage} z ${opponent.HP} punktów rzycia`)
  opponent.HP -= damage
+ if (opponent.HP <= 0) {
+     Speech.say(`${opponent.Name} poległ`)
+     Speech.say(`${attacker.Name} zabił ${opponent.Name}`)
+     GameState.Killed(opponent)
+ }
  return true
 } else {
     Speech.say(`${attacker.Name} nie trafia ${opponent.Name}`)

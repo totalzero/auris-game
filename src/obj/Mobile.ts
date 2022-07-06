@@ -1,6 +1,6 @@
 import { randomBoolean, randomInteger } from "../random";
+import GameState from "../tools/GameState";
 import Speech from "../tools/speech";
-
 import GameObj from "./GameObj";
 import Item from "./Item";
 

@@ -19,9 +19,12 @@ Move(x: number, y: number) {
 if (this.distanceFromPlayer(x, y) === 0) {
 Speech.say("")
 } else {
+if (this.distanceFromPlayer(x, y) <= this._player.ActionPoints) {
 this.playSteps(this.distanceFromPlayer(x, y))
+}
 Speech.say(this.movingDescription(x, y))
 this.goPoint(x, y)
+
 GameState.startUpdate()
 
 }
@@ -59,6 +62,7 @@ if (this._player.ActionPoints >= distance)    {
 this._player.X = x
 this._player.Y = y
 this._player.ActionPoints -= distance
+
 }
 }
 

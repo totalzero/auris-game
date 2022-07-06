@@ -1,4 +1,5 @@
 
+import Mobile from "../obj/Mobile";
 import Room from "../obj/Room";
 import Player from "../std/Player";
 import Speech from "./speech";
@@ -9,7 +10,7 @@ import Speech from "./speech";
 
 export default class GameState {
      private static _rooms: Map<Function, Room> = new Map<Function, Room>()
-
+private static _hitCounter: Map<Mobile, number> = new Map<Mobile, number>()
 
 /**
  * function creates and stores Room object
@@ -41,6 +42,28 @@ for (let i of Player!.Instance!.Room!.Objects) {
 
 }
 
+static Killed(mob: Mobile) {
+if (mob instanceof Player) {
+    //game over
+} else {
+    Player.Instance!.Room?.removeObject(mob)
+const expPoints = this.calculateExp(mob)
+Player.Instance!.Experience += expPoints
+this._hitCounter.delete(mob)
+Speech.say(`otrzymujesz ${expPoints} punktów doświadczenia.`)
+}
+}
 
+static Hit(mob: Mobile) {
+    if (! this._hitCounter.get(mob)) {
+        this._hitCounter.set(mob, 1)
+    } else {
+        this._hitCounter.set(mob, this._hitCounter.get(mob)! + 1)
+    }
+}
 
+private static calculateExp(mob: Mobile): number {
+    const hitCount = this._hitCounter.get(mob)
+return mob.Level * hitCount!
+}
 }
