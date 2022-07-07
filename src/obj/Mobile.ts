@@ -1,11 +1,13 @@
 import { randomBoolean, randomInteger } from "../random";
 import GameState from "../tools/GameState";
+import { soundType } from "../tools/soundType";
 import Speech from "../tools/speech";
 import GameObj from "./GameObj";
 import Item from "./Item";
 
 export default class Mobile extends GameObj {
-
+protected _soundDead: string
+protected _soundBlow: string
 protected _equipment: Item[] = []
 protected _hp: number = 100
 protected _move: boolean = true
@@ -14,7 +16,16 @@ protected _combatDistance: number = 0
 constructor() {
     super()
     this._canPickup = false
-    
+    this._soundBlow = soundType.other
+    this._soundDead = soundType.other
+}
+
+get SoundDead(): string {
+    return this._soundDead
+}
+
+get SoundBlow(): string {
+    return this._soundBlow
 }
 
 get Equipment(): Item[] {
@@ -123,3 +134,4 @@ set CombatDistance(dis) {
 }
 
 }
+

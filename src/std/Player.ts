@@ -1,6 +1,7 @@
 import Mobile from "../obj/Mobile";
 import Room from "../obj/Room";
 import Skill from "../obj/Skill";
+import { soundType } from "../tools/soundType";
 import Armor from "./Armor";
 import Helmet from "./Helmet";
 import Shoes from "./Shoes";
@@ -21,6 +22,8 @@ protected _skills: Skill[] = []
 
 constructor() {
     super()
+    this._soundBlow = soundType.player
+    this._soundDead = soundType.player
     this.Respawn = false
     this._combatDistance = 0
     Player.Instance = this

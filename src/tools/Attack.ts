@@ -1,6 +1,7 @@
 import Mobile from "../obj/Mobile"
 import { randomBoolean, randomInteger } from "../random"
 import GameState from "./GameState"
+import SoundManager from "./SoundManager"
 import Speech from "./speech"
 
 
@@ -22,10 +23,14 @@ if (dm > 0) {
 
 if (isDistance) {
 if (isHit) {
+    const snd = SoundManager.Effect.Combat.Blow[opponent.SoundBlow] as HTMLAudioElement[]
+    snd[randomInteger(0, 9)].play()
     GameState.Hit(opponent)
     Speech.say(`${opponent.Name} traci ${damage} z ${opponent.HP} punktów rzycia`)
  opponent.HP -= damage
  if (opponent.HP <= 0) {
+     const snd = SoundManager.Effect.Combat.Dead[opponent.SoundDead] as HTMLAudioElement[]
+     snd[randomInteger(0, 9)].play()
      Speech.say(`${opponent.Name} poległ`)
      Speech.say(`${attacker.Name} zabił ${opponent.Name}`)
      GameState.Killed(opponent)
