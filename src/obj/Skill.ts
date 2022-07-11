@@ -1,7 +1,9 @@
+import GameObj from "./GameObj"
+
 export default abstract class Skill {
  protected _name: string = ''   
  protected _desc: string = ''
- protected _action: Function = () => {}
+ protected _action: Function = (obj: GameObj) => {}
 
  get Name(): string {
      return this._name
@@ -11,7 +13,7 @@ export default abstract class Skill {
      return this._desc
  }
 
- Action() {
-     this._action()
+ Action(obj: GameObj | null = null) {
+     this._action(obj)
  }
 }

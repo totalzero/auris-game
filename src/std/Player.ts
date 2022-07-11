@@ -1,4 +1,5 @@
 import Mobile from "../obj/Mobile";
+import { Professions } from "../obj/Professions";
 import Room from "../obj/Room";
 import Skill from "../obj/Skill";
 import { soundType } from "../tools/soundType";
@@ -9,6 +10,7 @@ import Weapon from "./Weapon";
 
 export default class Player extends Mobile {
     static Instance?: Player
+    protected _profession: Professions = Professions.None
  protected _exp: number = 0
  protected _skillPoints: number = 100
  protected _maxSkillPoints: number = 100   
@@ -16,6 +18,8 @@ export default class Player extends Mobile {
 protected _money: number = 0
 protected _actionPoints: number = 3
 protected _maxActionPoints: number = 3
+protected _manaPoints: number = 100
+protected _maxManaPoints = 100
 protected _slots: Slots = {}
 protected _actuallRoom?: Room
 protected _skills: Skill[] = []
@@ -27,6 +31,29 @@ constructor() {
     this.Respawn = false
     this._combatDistance = 0
     Player.Instance = this
+}
+
+get Profession(): Professions {
+    return this._profession
+}
+
+set Profession(prof) {
+    this._profession = prof
+}
+
+get ManaPoints(): number  {
+    return this._manaPoints
+}
+set ManaPoints(mana) {
+    this._manaPoints = mana
+}
+
+get MaxManaPoints(): number {
+    return this._maxManaPoints
+}
+
+set MaxManaPoints(mana) {
+    this._maxManaPoints = mana
 }
 
 get Slots(): Slots {
