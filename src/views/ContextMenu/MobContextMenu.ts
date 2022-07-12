@@ -9,12 +9,6 @@ export default class MobContextMenu extends BaseContextMenu {
      super(view, obj)
 
      this._options = [
-         ["atakuj", () => {
-             if (! new ControlPlayer().Combat(this._obj as Monster))  {
-                 this.say("jesteś za daleko.")
-             }
-             this.backToPreviousView()
-         }],
          ["obejrzyj", () => {
              const info: string = this._obj.getInfo() as string
              this.say(info)

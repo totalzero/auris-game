@@ -5,7 +5,7 @@ function item1(): Item {
 i.Name = "jakis tam przedmiot"
 i.Description = "to jest opis tego przedmiotu"
 i.X = 1
-
+i.Value = 100
     return i
 }
 
