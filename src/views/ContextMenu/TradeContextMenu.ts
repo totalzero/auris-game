@@ -9,8 +9,11 @@ private _tradingMode: TradingMode = "buy"
 
 
  constructor(view: BaseView, obj: GameObj) {
-     super(view, obj)
+     super(view, obj, "Menu Handlu")
+     
      this.buyMode()
+     this._tradingMode = "buy";
+
      this.say("urzyj klawisza tab, aby zmienić tryb handlu.")
  }  
 

@@ -8,7 +8,8 @@ import BaseContextMenu from "./BaseContextMenu";
 export default class TrainingContextMenu extends BaseContextMenu {
     private _player: Player;
  constructor(view: BaseView, obj: GameObj)    {
-     super(view, obj)
+     super(view, obj, "Menu Trenowania")
+     
      this._player = Player.Instance!
  const skills = (this._obj as Trainer).Training(this._player.Profession, this._player.Level)
  if (skills) {
