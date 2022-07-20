@@ -6,6 +6,8 @@ import GameObj from "./GameObj";
 import Item from "./Item";
 
 export default class Mobile extends GameObj {
+protected _events: MobileEvents = {}
+
 protected _soundDead: string
 protected _soundBlow: string
 protected _equipment: Item[] = []
@@ -51,7 +53,13 @@ get HP(): number {
 }
 
 set HP(hp: number) {
+    if (hp < this._hp) {
+        if (this._events.Wounded) this._events.Wounded()
+}
     this._hp = hp
+    if (this._hp <= 0) {
+        if (this._events.Killed) this._events.Killed()
+    }
 }
 
 get Move(): boolean {
@@ -135,3 +143,7 @@ set CombatDistance(dis) {
 
 }
 
+interface MobileEvents {
+    Killed?: Function,
+    Wounded?: Function,
+}

@@ -10,6 +10,7 @@ import Weapon from "./Weapon";
 
 export default class Player extends Mobile {
     static Instance?: Player
+    protected _questList: Map<string, string> = new Map<string, string>()
     protected _profession: Professions = Professions.None
  protected _exp: number = 0
  protected _skillPoints: number = 100
@@ -31,6 +32,23 @@ constructor() {
     this.Respawn = false
     this._combatDistance = 0
     Player.Instance = this
+}
+
+GetQuests(): string[] {
+    const keys = this._questList.keys()
+    let questNames = [] 
+    for(let element of keys) {
+    questNames.push(element)
+    }
+    return questNames
+    }
+
+GetQuestDescription(name: string): string | undefined {
+    return this._questList.get(name)
+}
+
+SetQuest(name: string, desc: string) {
+    this._questList.set(name, desc)
 }
 
 get Profession(): Professions {

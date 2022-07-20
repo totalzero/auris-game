@@ -5,6 +5,7 @@ import BasePlayerMenuView from "./BasePlayerMenuView";
 import PlayerArmamentView from "./PlayerArmamentView";
 import PlayerEquipmentView from "./PlayerEquipmentView";
 import PlayerInfoView from "./PlayerInfoView";
+import PlayerQuestMenuView from "./PlayerQuestMenuView";
 import PlayerSkillsView from "./PlayerSkillsView";
 
 export default class PlayerMainView extends BasePlayerMenuView {
@@ -24,6 +25,9 @@ this._options = [
     }],
     ["Umiejętności", () => {
         this.skills()
+    }],
+    ["Zadania", () => {
+        this.Quest()
     }]
 ]
 
@@ -45,6 +49,10 @@ private playerInfo() {
 
 private skills() {
     ChangeView(new PlayerSkillsView(this))
+}
+
+private Quest() {
+    ChangeView(new PlayerQuestMenuView(this))
 }
 
 }

@@ -11,6 +11,7 @@ import Speech from "./speech";
 export default class GameState {
      private static _rooms: Map<Function, Room> = new Map<Function, Room>()
 private static _hitCounter: Map<Mobile, number> = new Map<Mobile, number>()
+ static questInfo: Map<string, string> = new Map<string, string>()
 
 /**
  * function creates and stores Room object
