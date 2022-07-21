@@ -13,7 +13,7 @@ export default class Monstrum extends Monster {
 
         this._events.Killed = () => {
             (new TestQuest).ProgresQuest()
-            Speech.say("idz i odbierz nagrode")
+            
         }
     }
 }

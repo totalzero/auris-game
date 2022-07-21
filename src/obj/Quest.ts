@@ -25,7 +25,7 @@ return true
 }
 
 ProgresQuest(): boolean {
-    if (this.checkStatus() == "Start") {
+    if (this.checkStatus() == "START") {
     this.saveQuestStatus(QuestStatus.Progress)
     return true
     } 
@@ -33,7 +33,7 @@ ProgresQuest(): boolean {
 }
 
 EndQuest(): boolean {
-    if (this.checkStatus() == "Progress") {
+    if (this.checkStatus() == "PROGRESS") {
     this.saveQuestStatus(QuestStatus.End)
 return true
     }
