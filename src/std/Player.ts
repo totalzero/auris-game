@@ -3,6 +3,7 @@ import { Professions } from "../obj/Professions";
 import Room from "../obj/Room";
 import Skill from "../obj/Skill";
 import { soundType } from "../tools/soundType";
+import Speech from "../tools/speech";
 import Armor from "./Armor";
 import Helmet from "./Helmet";
 import Shoes from "./Shoes";
@@ -88,7 +89,25 @@ set Slots(slot: Slots) {
 
  set Experience(exp: number) {
      this._exp = exp
+     if (this.Experience >= this.getNextLevel()) {
+this.nextLevel()
+     }
  }
+
+getNextLevel(): number {
+    return (this.Level * this.Level) * 10
+}
+
+private nextLevel() {
+const nl = Math.ceil(Math.sqrt(this.Experience / 10))
+
+for (let i = 0; i < nl - this.Level; i++) {
+    this.SkillPoints ++
+
+}
+this.Level = nl
+Speech.say("awansujesz na następny poziom")
+}
 
  get SkillPoints(): number {
      return this._skillPoints

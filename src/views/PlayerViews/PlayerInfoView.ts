@@ -5,18 +5,16 @@ import BasePlayerMenuView from "./BasePlayerMenuView";
 import PlayerMainView from "./PlayerMainView";
 
 export default class PlayerInfoView extends BasePlayerMenuView {
-
-
-
  constructor(view: BaseView)    {
      super(view)
      
  this._options = [
      [`Poziom: ${Player.Instance!.Level}`, () => {}],
-[`punkty doświadczenia: ${Player!.Instance?.Experience}`, () => {}],
+[`punkty doświadczenia: ${Player!.Instance?.Experience} / ${Player.Instance?.getNextLevel()}`, () => {}],
 [`punkty zdrowia: ${Player!.Instance?.HP} / ${Player!.Instance?.MaxHP}`, () => {}],
 [`Atak: ${Player!.Instance?.Offensive}`, () => {}],
 [`Obrona: ${Player!.Instance?.Defensive}`, () => {}],
+[`Punkty Umiejętności: ${Player.Instance!.SkillPoints}`, () => {}],
 [`Monety: ${Player!.Instance?.Money}`, () => {}]
  ]    
 
