@@ -1,4 +1,5 @@
 
+import Item from "../obj/Item";
 import Mobile from "../obj/Mobile";
 import Room from "../obj/Room";
 import Player from "../std/Player";
@@ -12,6 +13,7 @@ export default class GameState {
      private static _rooms: Map<Function, Room> = new Map<Function, Room>()
 private static _hitCounter: Map<Mobile, number> = new Map<Mobile, number>()
  static questInfo: Map<string, string> = new Map<string, string>()
+static ItemToCombine: Item | undefined = undefined
 
 /**
  * function creates and stores Room object
