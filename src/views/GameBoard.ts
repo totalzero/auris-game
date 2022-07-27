@@ -11,6 +11,7 @@ import PlayerMainView from "./PlayerViews/PlayerMainView";
 import ControlPlayer from "../tools/ControlPlayer";
 import SoundManager from "../tools/SoundManager";
 import GameState from "../tools/GameState";
+import Item from "../obj/Item";
 
 export default class GameBoard extends BaseView {
     private _location?: Room 
@@ -110,6 +111,10 @@ private exit() {
  
  switch (key.key) {
 
+case " ":
+this.combineItem()
+break;
+
 case "p":
 this.openPlayerMenu()
 break;
@@ -189,6 +194,15 @@ private getSoundFloors(): HTMLAudioElement  {
     return SoundManager.Effect.Floors[this._location!.getFloor(this._cursor.x, this._cursor.y)]
 }
 
+private combineItem() {
+    const itm = GameState.ItemToCombine
+    if (itm && (itm instanceof Item)) {
+const obj = this._selectedObject
+if (obj instanceof Item) {
+    (obj as Item).Combine(itm)
+}
+    }
+}
 
 }
 

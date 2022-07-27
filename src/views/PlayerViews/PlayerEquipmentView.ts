@@ -35,7 +35,13 @@ try {
         const result = this._listItemsToCombine[this._menuPos].Combine(GameState.ItemToCombine)
         if (result ) {
             Player.Instance?.addEquipment(result)
+            Player.Instance?.removeEquipment(GameState.ItemToCombine)
+            Player.Instance?.removeEquipment(this._listItemsToCombine[this._menuPos])
+            this.updateEquipmentMenu()
             this.say(`otrzymujesz ${result.Name}`)
+        } else {
+            this.say("to nie pasuje")
+            GameState.ItemToCombine = undefined
         }
             } else {
         const result = this._listItemsToCombine[this._menuPos]
@@ -45,6 +51,7 @@ try {
         
 } catch (error) {
 this.say("błąd")
+console.log(error)
 }
 }
 
@@ -52,6 +59,7 @@ private addItemToMenu(item: Item) {
  this._options.push([`${item.Name}`, () => {
      ChangeView(new PlayerEquipmentContextMenu(this, item, this.updateEquipmentMenu))
  }])   
+ this._listItemsToCombine.push(item)
 }
 
 private constructMenu() {

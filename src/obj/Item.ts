@@ -2,7 +2,7 @@ import GameObj from "./GameObj";
 
 export default class Item extends GameObj {
  protected _value: number = 0  
-protected _combinations: Map<string, Function> = new Map<string, Function>()
+protected _combinations: Map<Function, Function> = new Map<Function, Function>()
 constructor() {
     super()
     this._canPickup = true
@@ -26,7 +26,7 @@ constructor() {
  }
 
 Combine(itm: Item): Item | undefined  {
-    const newItem = this._combinations.get(itm.constructor.name)
+    const newItem = this._combinations.get(itm.constructor)
     if (newItem) {
         return Reflect.construct(newItem, [])
     }

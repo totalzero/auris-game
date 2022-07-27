@@ -4,6 +4,7 @@ import GameState from "../../tools/GameState";
 import { Loc1 } from "./loc1";
 import TestMerhant from "./Merhant";
 import Monstrum from "./Monstrum";
+import { TestSwordBlade } from "./Sword";
 import TestTrainer from "./Trainer1";
 
 
@@ -14,7 +15,7 @@ export class Loc2 extends Room {
         this.Name = "lokacja druga testowa"
         this.Description = "to jest druga testowa lokacja, wiec nie spodziewaj sie niczego "
         this.Exits.south = Loc1
-        this.AddObject(new TestMerhant(), new TestTrainer(), new Monstrum())
+        this.AddObject(new TestMerhant(), new TestTrainer(), new Monstrum(), new TestSwordBlade())
     }
 }
 
