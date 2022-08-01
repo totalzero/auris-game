@@ -5,6 +5,9 @@ export default class Output {
     private static log: string[] = []
 protected static outFunction: Function = (tx: string) => {}
 
+static SetOutput(out: Function) {
+    Output.outFunction = out
+}
 
  static Send(text: string, log: boolean = true) {
 if (log) {

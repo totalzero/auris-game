@@ -11,19 +11,30 @@ export default class MainMenu extends BaseMenu {
         super()
         this.say("Menu Główne")
 this._options= [
-    ["Graj", () => {
-        this.say("uruchamiam gre")
+    {
+        name : "Graj",
+        action : () => {
+            this.say("uruchamiam gre")
+            
+            ChangeView(new GameBoard())
+            
+        }
+        },
+        {
+name: "Opcje",
+action:      () => {
+    ChangeView(new Options())
+    
+        }
+    
+        },
+        {
+            name: "Wyjście",
+            action:      () => {
+                window.close()
+            }
         
-        ChangeView(new GameBoard())
-        
-    }],
-    ["Opcje", () => {
-ChangeView(new Options())
-
-    }],
-    ["wyjście", () => {
-        window.close()
-    }]
+        }
 ]
     }
 }

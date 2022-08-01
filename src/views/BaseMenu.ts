@@ -1,3 +1,5 @@
+import GameObj from "../obj/GameObj"
+import { menuItem } from "../obj/Types"
 import SoundManager from "../tools/SoundManager"
 import Speech from "../tools/speech"
 import BaseView from "./BaseView"
@@ -6,7 +8,7 @@ export  class BaseMenu extends BaseView {
     protected _menuPos: number = -1
     protected _execute: Function | undefined = undefined
 protected _options: menuItem[]  = []
-
+protected _obj?: GameObj
 
 
 
@@ -31,9 +33,10 @@ this._run()
 
 
 protected _cursor(position: menuItem) {
-    this._execute = position[1]
+    this._execute = position.action
+    this._obj = position.obj
     SoundManager.Effect.Menu.MoveFocus.play()
-    Speech.say(position[0])
+    Speech.say(position.name)
 }
 
  protected _cursorDown() {
@@ -57,5 +60,3 @@ this._execute()
      }
  }
 }
-
-export type menuItem = [string, Function]

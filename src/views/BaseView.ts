@@ -1,7 +1,15 @@
-import Speech from "../tools/speech";
+import Output from "../tools/Output";
+
 
 export default class BaseView {
-    protected say = Speech.say
+    protected _nameView: string = ""
+    protected say(text: string) {
+        Output.Send(text, false)
+    }
+
+protected send(text: string) {
+    Output.Send(text)
+}
 
  Keyboard(key: KeyboardEvent)    {
     
