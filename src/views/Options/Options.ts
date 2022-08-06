@@ -8,13 +8,19 @@ export default class Options extends BaseMenu {
      super()
      this.say("opcje gry")
      this._options = [
-         ["mowa", () => {
-ChangeView(new OptionsSpeech())
-         }],
-         ["powrót", () => {
-             ChangeView(new MainMenu())
-             this.say("Menu Główne")
-         }]
+        {
+name: "Mowa",
+action:           () => {
+    ChangeView(new OptionsSpeech())
+             }
+        },
+        {
+            name: "Powrót",
+            action:      () => {
+                ChangeView(new MainMenu())
+                this.say("Menu Główne")
+            }
+        }
      ]
  }
 }

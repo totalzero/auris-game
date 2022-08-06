@@ -1,5 +1,6 @@
 import GameObj from "../obj/GameObj"
 import { menuItem } from "../obj/Types"
+import { ChangeView } from "../tools/Focus"
 import SoundManager from "../tools/SoundManager"
 import Speech from "../tools/speech"
 import BaseView from "./BaseView"
@@ -8,9 +9,11 @@ export  class BaseMenu extends BaseView {
     protected _menuPos: number = -1
     protected _execute: Function | undefined = undefined
 protected _options: menuItem[]  = []
+protected _previousView?: BaseView
 protected _obj?: GameObj
+protected _messageCloseMenu: string = "zamykam menu"
 
-
+    
 
  Keyboard(key: KeyboardEvent): void {
  switch (key.key) {
@@ -26,11 +29,24 @@ protected _obj?: GameObj
 this._run()
              break;
 
+case "Escape":
+    this.backToPreviousView()
+    break;
+
      default:
+        super.Keyboard(key)
          break;
  }    
  }
 
+ protected backToPreviousView() {
+    
+    if (this._previousView) {
+    ChangeView(this._previousView)
+    this.say(this._messageCloseMenu)
+    SoundManager.Effect.Menu.CloseMenu.play()
+    }
+}
 
 protected _cursor(position: menuItem) {
     this._execute = position.action

@@ -5,3 +5,8 @@ export interface  menuItem {
  action: Function,
  obj?: GameObj   
 }
+
+export interface Cursor {
+    x: number,
+    y: number
+}

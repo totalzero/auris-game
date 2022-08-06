@@ -12,6 +12,7 @@ import ControlPlayer from "../tools/ControlPlayer";
 import SoundManager from "../tools/SoundManager";
 import GameState from "../tools/GameState";
 import Item from "../obj/Item";
+import { Cursor } from "../obj/Types";
 
 export default class GameBoard extends BaseView {
     private _location?: Room 
@@ -22,7 +23,7 @@ private _objIter: Iterator = new Iterator([])
 
  constructor()    {
      super()
-     
+this._nameView = "Główny widok lokacji"     
      if (Player.Instance != undefined)    
  this._location = Player.Instance.Room
 
@@ -204,9 +205,4 @@ if (obj instanceof Item) {
     }
 }
 
-}
-
-interface Cursor {
-    x: number,
-    y: number
 }
