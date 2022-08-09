@@ -12,21 +12,26 @@ protected _options: menuItem[]  = []
 protected _previousView?: BaseView
 protected _obj?: GameObj
 protected _messageCloseMenu: string = "zamykam menu"
+protected _messageOpenMenu: string = ""
 
-    
+constructor(view?: BaseView, messageOpenMenu: string = "") {
+    super()
+    this._messageOpenMenu = messageOpenMenu
+    this._previousView = view
+}
 
  Keyboard(key: KeyboardEvent): void {
  switch (key.key) {
      case "ArrowDown":
-         this._cursorDown()
+         this.cursorDown()
          break;
  
          case "ArrowUp":
-             this._cursorUp()
+             this.cursorUp()
              break;
 
              case "Enter":
-this._run()
+this.run()
              break;
 
 case "Escape":
@@ -48,28 +53,28 @@ case "Escape":
     }
 }
 
-protected _cursor(position: menuItem) {
+protected cursor(position: menuItem) {
     this._execute = position.action
     this._obj = position.obj
     SoundManager.Effect.Menu.MoveFocus.play()
     Speech.say(position.name)
 }
 
- protected _cursorDown() {
+ protected cursorDown() {
 if (this._menuPos < this._options.length- 1) {
 this._menuPos ++
-this._cursor(this._options[this._menuPos])
+this.cursor(this._options[this._menuPos])
 }
  }
 
- protected _cursorUp() {
+ protected cursorUp() {
          if (this._menuPos > 0) {
              this._menuPos --
-             this._cursor(this._options[this._menuPos])
+             this.cursor(this._options[this._menuPos])
          }
  }
 
- protected _run() {
+ protected run() {
      if (this._execute !=  undefined) {
          SoundManager.Effect.Menu.EnterOption.play()
 this._execute()

@@ -56,9 +56,13 @@ console.log(error)
 }
 
 private addItemToMenu(item: Item) {
- this._options.push([`${item.Name}`, () => {
-     ChangeView(new PlayerEquipmentContextMenu(this, item, this.updateEquipmentMenu))
- }])   
+    this._options.push({
+        name: item.Name,
+        action: () => {
+            ChangeView(new PlayerEquipmentContextMenu(new PlayerEquipmentView(this._previousView!), item))
+        },
+        obj: item
+    })
  this._listItemsToCombine.push(item)
 }
 
@@ -69,9 +73,13 @@ for (let i of eq) {
     this.addItemToMenu(i)
 }
     } else {
-        this._options.push(["pusto", () => {}])
-    }
+this._options.push({
+    name: "Pusto",
+    action: () => {}
+})
 }
+}
+
 
 private updateEquipmentMenu() {
     this._options = []
@@ -81,7 +89,12 @@ for (let i of eq) {
     this.addItemToMenu(i)
 }
     } else {
-        this._options.push(["pusto", () => {}])
+        this._options.push({
+            name: "pusto", 
+            action: () => {
+                this.say("nic tu nie ma")
+            }
+        })
     }
 
 }

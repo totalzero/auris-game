@@ -4,11 +4,13 @@ import { Loc2 } from "./GameWorld/test/loc2"
 import Player from "./std/Player"
 import * as FOCUS from "./tools/Focus"
 import GameState from "./tools/GameState"
+import Output from "./tools/Output"
 import SoundManager from "./tools/SoundManager"
 import Speech from "./tools/speech"
 import MainMenu from "./views/MainMenu"
 
 
+Output.SetOutput(Speech.say)
 SoundManager.init()
 const player = new Player()
 player.Room = GameState.getRoom(Loc1)

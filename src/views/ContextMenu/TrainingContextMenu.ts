@@ -15,17 +15,20 @@ export default class TrainingContextMenu extends BaseContextMenu {
  if (skills) {
      for (let skil of skills) {
 if (! this.checkSkill(skil)) {
-this._options.push([skil.Name, () => {
-    if (this._player.SkillPoints > 0) {
-        this._player.SkillPoints -= 1
-        this._player.Skills.push(skil)
-        this.say(`trenujesz: ${skil.Name}`)
-        this.backToPreviousView()
-    } else {
-        this.say("nie masz punktów umiejętności wymaganych do treningu")
+this._options.push({
+    name: skil.Name,
+    action: () => {
+        if (this._player.SkillPoints > 0) {
+            this._player.SkillPoints -= 1
+            this._player.Skills.push(skil)
+            this.say(`trenujesz: ${skil.Name}`)
+            this.backToPreviousView()
+        } else {
+            this.say("nie masz punktów umiejętności wymaganych do treningu")
+        }
     }
-}])
-}
+    
+})}
      }
  } else {
      this.say("nie wiem nic o umiejętnościach twojej profesji")

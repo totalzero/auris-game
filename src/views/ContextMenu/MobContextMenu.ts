@@ -9,10 +9,13 @@ export default class MobContextMenu extends BaseContextMenu {
      super(view, obj)
 
      this._options = [
-         ["obejrzyj", () => {
-             const info: string = this._obj.getInfo() as string
-             this.say(info)
-         }]
-     ]
+     {
+        name: "Obejrzyj",
+        action:     () => {
+            const info: string = this._obj!.getInfo() as string
+            this.say(info)
+        },
+obj: obj
+     }]
  }
 }

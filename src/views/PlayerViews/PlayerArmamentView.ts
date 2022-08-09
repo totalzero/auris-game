@@ -8,13 +8,25 @@ export default class PlayerArmamentView extends BasePlayerMenuView {
         super(view)
  
 this._options = [
-[`Hełmn: ${this.checkName(Player!.Instance?.Slots.helmet)}`, () => {}],    
-[`Zbroja: ${this.checkName(Player!.Instance?.Slots.armor)}`, () => {}],
-[`Buty: ${this.checkName(Player!.Instance?.Slots.shoes)}`, () => {}],
-[`Broń: ${this.checkName(Player!.Instance?.Slots.weapon)}`, () => {}]
+{
+name: `Hełmn: ${this.checkName(Player!.Instance?.Slots.helmet)}`,
+action: ()  => {}
+},
+{
+    name: `Zbroja: ${this.checkName(Player!.Instance?.Slots.armor)}`,
+    action: () => {}
+},
+{
+    name: `Buty: ${this.checkName(Player!.Instance?.Slots.shoes)}`,
+    action: () => {},
+},
+{
+    name: `Broń: ${this.checkName(Player!.Instance?.Slots.weapon)}`,
+    action: () => {}
+}
 ]
 
-        this.say("menu uzbrojenia")
+        
     }
 
 private checkName(item?: Item): string {

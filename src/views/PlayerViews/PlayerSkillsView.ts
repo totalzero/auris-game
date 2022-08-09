@@ -20,8 +20,11 @@ private constructSkillOptions() {
 }
 
  private addSkillToMenu(skill: Skill)    {
-this._options.push([`${skill.Name}`, () => {
-    this.say(skill.Description)
-}])
+    this._options.push({
+        name: `${skill.Name}`,
+        action: () => {
+            this.say(skill.Description)
+        }
+         })
  }
 }

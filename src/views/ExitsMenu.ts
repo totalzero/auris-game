@@ -2,70 +2,63 @@ import Player from "../std/Player";
 import { ChangeView } from "../tools/Focus";
 import GameState from "../tools/GameState";
 import SoundManager from "../tools/SoundManager";
-import { BaseMenu, menuItem } from "./BaseMenu";
+import { BaseMenu} from "./BaseMenu";
+import BaseView from "./BaseView";
 import GameBoard from "./GameBoard";
 
 export default class ExitsMenu extends BaseMenu {
 
-private _previousView: GameBoard
 
-    constructor(view: GameBoard) {
-        super()
-        this._previousView = view
+
+    constructor(view: BaseView) {
+        super(view, "menu wyjść")
+        
  const rm = Player.Instance!.Room       
  if (rm?.Exits.north) {
      const ex = rm.Exits.north
-     this._options.push(["Północ", () => {
-Player.Instance!.Room = GameState.getRoom(ex)
-     }])
+     this._options.push({
+        name: "Północ",
+        action: () => {
+            Player.Instance!.Room = GameState.getRoom(ex)
+        }
+     })
     }
 
      if (rm?.Exits.south) {
          const ex = rm.Exits.south
-         this._options.push(["Południe", () => {
-Player.Instance!.Room = GameState.getRoom(ex)
-         }])
-        }
+        this._options.push({
+            name: "Południe",
+            action: () => {
+                Player.Instance!.Room = GameState.getRoom(ex)
+            }
+        })}
 
          if (rm?.Exits.east) {
              const ex = rm.Exits?.east
-             this._options.push(["Wschód", () => {
-                 Player.Instance!.Room = GameState.getRoom(ex)
-             }])
-            }  
+            this._options.push({
+                name: "Wschód",
+                action: () => {
+                    Player.Instance!.Room = GameState.getRoom(ex)
+                }
+            })}  
 
             if (rm?.Exits.west) {
                 const ex = rm.Exits.west
-                this._options.push(["Zachód", () => {
+            this._options.push({
+                name: "Zachód",
+                action: () => {
                     Player.Instance!.Room = GameState.getRoom(ex)
-                }])
-            }
+                }
+            })}
 
             this.say("menu przejść")
         }
 
-Keyboard(key: KeyboardEvent): void {
-    switch (key.key) {
-        case "Escape":
-            this.BackToPreviousView()
-            break;
-    
-        default:
-            super.Keyboard(key)
-            break;
-    }
-}
-
 protected _run(): void {
-    super._run()
+    super.run()
     this.newGameBoard()
 }
 
-    private BackToPreviousView() {
-        ChangeView(this._previousView)
-        SoundManager.Effect.Menu.CloseMenu.play()
-        this.say("zamykam menu")
-    }
 
     private newGameBoard() {
         ChangeView(new GameBoard())

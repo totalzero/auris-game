@@ -17,10 +17,6 @@ protected _menuName: string = "Menu Obiektu"
      this.say(this._menuName)
  }
 
-protected _run(): void {
-    super._run()
-    //this.backToPreviousView()
-}
-
+ 
 
 }

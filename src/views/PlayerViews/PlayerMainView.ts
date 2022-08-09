@@ -10,28 +10,40 @@ import PlayerSkillsView from "./PlayerSkillsView";
 
 export default class PlayerMainView extends BasePlayerMenuView {
 constructor(view: BaseView) {
-    super(view)
-this._menuClose = "zamykam menu"
-
+    super(view, "Menu Postaci")
+this._messageCloseMenu = "Zamykam menu"
 this._options = [
-    ["Informacje", () => {
-        this.playerInfo()
-    }],
-    ["Uzbrojenie", () => {
+    {
+name: "Informacje",
+action:  () => {
+    this.playerInfo()
+}
+},
+{
+    name: "Uzbrojenie",
+    action:      () => {
         this.armament()
-    }],
-    ["Ekwipunek", () => {
-        this.equipment()
-    }],
-    ["Umiejętności", () => {
+    }
+    },
+    {
+        name: "Ekwipunek",
+        action: () => {
+            this.equipment()
+        }        
+},
+{
+    name: "Umiejętności",
+    action: () => {
         this.skills()
-    }],
-    ["Zadania", () => {
-        this.Quest()
-    }]
+    }
+    },
+    {
+        name: "Zadania",
+        action:     () => {
+            this.Quest()
+        }
+    }
 ]
-
-    this.say("menu postaci")
 }
 
 

@@ -10,12 +10,18 @@ export default class OptionsSpeech extends BaseMenu {
      super()
 this.say("opcje mowy")    
      this._options = [         
-         ["szybkość mowy", () => {
-ChangeView(new ChangeRate())
-         }],
-         ["Wróć do menu", () => {
-ChangeView(new MainMenu())
-         }]
+{
+    name: "Szybkość mowy",
+    action:           () => {
+        ChangeView(new ChangeRate())
+                 }
+        },         
+        {
+            name: "Wróć do menu",
+            action:     () => {
+                ChangeView(new MainMenu())
+                         }                     
+}
      ]
  }
 }
