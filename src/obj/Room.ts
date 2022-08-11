@@ -97,4 +97,26 @@ Update() {
  }
 
 }
+
+GetRoomSummary(): string {
+const exitSummary = () => {
+    let result = ""
+    for (let i in this.Exits) {
+        if (i) {
+            result += i + ", "
+        }
+    }
+    if (result.length === 0) result = "brak"
+
+    return result
+}
+
+    return `
+    ${this.Name}.
+    Wyjścia: ${exitSummary()}.
+    ${this.Description}
+    ${this.Objects.length > 0 ? `wokół siebie widzisz ${this.Objects.length} Obiektów` : "wokół siebie nie widzisz nic interesującego"}
+    `
+}
+
 }

@@ -141,6 +141,10 @@ set CombatDistance(dis) {
     this._combatDistance = dis
 }
 
+Combine(itm: GameObj): GameObj | undefined {
+    return undefined
+}
+
 }
 
 interface MobileEvents {

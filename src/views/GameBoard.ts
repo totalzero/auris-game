@@ -13,6 +13,7 @@ import SoundManager from "../tools/SoundManager";
 import GameState from "../tools/GameState";
 import Item from "../obj/Item";
 import { Cursor } from "../obj/Types";
+import { Exits } from "../obj/Exits";
 
 export default class GameBoard extends BaseView {
     private _location?: Room 
@@ -112,6 +113,22 @@ private exit() {
  
  switch (key.key) {
 
+case "n":
+    this.LeaveRoom("N")
+    break;
+
+case "s":
+this.LeaveRoom("S")
+break;
+
+case "e":
+this.LeaveRoom("E")
+break;
+
+case "w":
+this.LeaveRoom("w")
+break;
+
 case " ":
 this.combineItem()
 break;
@@ -120,9 +137,6 @@ case "p":
 this.openPlayerMenu()
 break;
 
-case "e" :
-this.openExitsMenu()
-break;
 
 case "m":
 this.openMinimap()
@@ -204,5 +218,36 @@ if (obj instanceof Item) {
 }
     }
 }
+
+LeaveRoom(direction: "N" | "S" | "E" | "w") {
+    const changeRoom = (param: Function | undefined) => {
+if (param) {
+const rm = GameState.getRoom(param)
+this.send(rm.GetRoomSummary())
+Player.Instance!.Room = rm
+ChangeView(new GameBoard())
+} else {
+    this.send("nie widzisz rzadnego wyjścia prowadzącego w tamtym kierunku.")
+}
+    }
+switch (direction) {
+    case "N":
+changeRoom(this._location?.Exits.north)        
+        break;
+case "S":
+changeRoom(this._location?.Exits.south)
+break;
+case "E":
+changeRoom(this._location?.Exits.east)
+break;
+case "w":
+changeRoom(this._location?.Exits.west)
+break;
+    default:
+        break;
+}    
+}
+
+
 
 }

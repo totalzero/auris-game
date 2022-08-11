@@ -9,7 +9,16 @@ protected _level: number = 1
 protected _respawn: boolean = true
 protected _use: any = undefined
 protected _canPickup: boolean = false
+protected _combinations: Map<Function, Function> = new Map<Function, Function>()
 
+Combine(itm: GameObj): GameObj | undefined  {
+    const newItem = this._combinations.get(itm.constructor)
+    if (newItem) {
+        return Reflect.construct(newItem, [])
+    }
+    
+    return undefined   
+}
 
 get Name(): string {
     return this._name

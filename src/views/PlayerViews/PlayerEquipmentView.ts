@@ -8,7 +8,7 @@ import PlayerEquipmentContextMenu from "./PlayerEquipmentContextMenu";
 
 export default class PlayerEquipmentView extends BasePlayerMenuView {
 
-private _listItemsToCombine: Item[] = []
+
 
  constructor(view: BaseView)    {
      super(view)
@@ -32,11 +32,11 @@ private getItemToCombine() {
 try {
         
     if (GameState.ItemToCombine) {
-        const result = this._listItemsToCombine[this._menuPos].Combine(GameState.ItemToCombine)
+        const result = this._options[this._menuPos].obj!.Combine(GameState.ItemToCombine)
         if (result ) {
-            Player.Instance?.addEquipment(result)
+            Player.Instance?.addEquipment(result as Item)
             Player.Instance?.removeEquipment(GameState.ItemToCombine)
-            Player.Instance?.removeEquipment(this._listItemsToCombine[this._menuPos])
+            Player.Instance?.removeEquipment(this._options[this._menuPos].obj! as Item)
             this.updateEquipmentMenu()
             this.say(`otrzymujesz ${result.Name}`)
         } else {
@@ -44,9 +44,11 @@ try {
             GameState.ItemToCombine = undefined
         }
             } else {
-        const result = this._listItemsToCombine[this._menuPos]
-        GameState.ItemToCombine = result
+        const result = this._options[this._menuPos].obj
+        if (result) {
+        GameState.ItemToCombine = result as Item
         this.say(`zaznaczam do połączenia ${result.Name}`)
+        }
             }
         
 } catch (error) {
@@ -63,7 +65,7 @@ private addItemToMenu(item: Item) {
         },
         obj: item
     })
- this._listItemsToCombine.push(item)
+ 
 }
 
 private constructMenu() {
