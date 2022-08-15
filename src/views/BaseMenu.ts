@@ -1,7 +1,7 @@
 import GameObj from "../obj/GameObj"
 import { menuItem } from "../obj/Types"
 import { ChangeView } from "../tools/Focus"
-import SoundManager from "../tools/SoundManager"
+import * as SoundManager from "../tools/SoundManager"
 import Speech from "../tools/speech"
 import BaseView from "./BaseView"
 
@@ -49,14 +49,14 @@ case "Escape":
     if (this._previousView) {
     ChangeView(this._previousView)
     this.say(this._messageCloseMenu)
-    SoundManager.Effect.Menu.CloseMenu.play()
+    SoundManager.SoundMenu.CloseMenu.play()
     }
 }
 
 protected cursor(position: menuItem) {
     this._execute = position.action
     this._obj = position.obj
-    SoundManager.Effect.Menu.MoveFocus.play()
+    SoundManager.SoundMenu.MoveFocus.play()
     Speech.say(position.name)
 }
 
@@ -76,7 +76,7 @@ this.cursor(this._options[this._menuPos])
 
  protected run() {
      if (this._execute !=  undefined) {
-         SoundManager.Effect.Menu.EnterOption.play()
+         SoundManager.SoundMenu.EnterOption.play()
 this._execute()
      }
  }

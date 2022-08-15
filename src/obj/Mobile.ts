@@ -1,6 +1,7 @@
 import { randomBoolean, randomInteger } from "../random";
 import GameState from "../tools/GameState";
-import { soundType } from "../tools/soundType";
+import * as SoundManager from "../tools/SoundManager"
+
 import Speech from "../tools/speech";
 import GameObj from "./GameObj";
 import Item from "./Item";
@@ -8,8 +9,8 @@ import Item from "./Item";
 export default class Mobile extends GameObj {
 protected _events: MobileEvents = {}
 
-protected _soundDead: string
-protected _soundBlow: string
+protected _soundDead: HTMLAudioElement[] = SoundManager.SoundOtherDead
+protected _soundBlow: HTMLAudioElement[] = SoundManager.SoundOtherBlow
 protected _equipment: Item[] = []
 protected _hp: number = 100
 protected _move: boolean = true
@@ -18,15 +19,13 @@ protected _combatDistance: number = 0
 constructor() {
     super()
     this._canPickup = false
-    this._soundBlow = soundType.other
-    this._soundDead = soundType.other
 }
 
-get SoundDead(): string {
+get SoundDead(): HTMLAudioElement[] {
     return this._soundDead
 }
 
-get SoundBlow(): string {
+get SoundBlow(): HTMLAudioElement[] {
     return this._soundBlow
 }
 

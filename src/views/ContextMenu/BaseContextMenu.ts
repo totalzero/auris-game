@@ -1,6 +1,6 @@
 import GameObj from "../../obj/GameObj";
 import { ChangeView } from "../../tools/Focus";
-import SoundManager from "../../tools/SoundManager";
+
 import { BaseMenu } from "../BaseMenu";
 import BaseView from "../BaseView";
 

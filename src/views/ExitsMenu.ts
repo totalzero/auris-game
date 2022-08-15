@@ -1,7 +1,7 @@
 import Player from "../std/Player";
 import { ChangeView } from "../tools/Focus";
 import GameState from "../tools/GameState";
-import SoundManager from "../tools/SoundManager";
+import * as SoundManager from "../tools/SoundManager"
 import { BaseMenu} from "./BaseMenu";
 import BaseView from "./BaseView";
 import GameBoard from "./GameBoard";

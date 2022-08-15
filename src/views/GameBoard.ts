@@ -9,7 +9,7 @@ import MiniMapView from "./MiniMapView";
 import ExitsMenu from "./ExitsMenu";
 import PlayerMainView from "./PlayerViews/PlayerMainView";
 import ControlPlayer from "../tools/ControlPlayer";
-import SoundManager from "../tools/SoundManager";
+import * as SoundManager from "../tools/SoundManager"
 import GameState from "../tools/GameState";
 import Item from "../obj/Item";
 import { Cursor } from "../obj/Types";
@@ -44,7 +44,7 @@ this._cursor.y += 1
 this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
 this.cursor()
     } else {
-SoundManager.Effect.Menu.Nothing.play()
+SoundManager.SoundMenu.Nothing.play()
     }
 }
 
@@ -55,7 +55,7 @@ private cursorDown() {
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
     } else {
-        SoundManager.Effect.Menu.Nothing.play()
+        SoundManager.SoundMenu.Nothing.play()
 }
     }
 
@@ -66,7 +66,7 @@ private cursorLeft() {
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
     } else {
-        SoundManager.Effect.Menu.Nothing.play()
+        SoundManager.SoundMenu.Nothing.play()
 }
 }
 
@@ -77,7 +77,7 @@ private cursorRight() {
     this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)
     this.cursor()
     } else {
-        SoundManager.Effect.Menu.Nothing.play()
+        SoundManager.SoundMenu.Nothing.play()
 }
     }
 
@@ -112,7 +112,9 @@ private exit() {
  Keyboard(key: KeyboardEvent): void {
  
  switch (key.key) {
-
+case "x":
+this.getRoomInfo()
+break;
 case "n":
     this.LeaveRoom("N")
     break;
@@ -206,7 +208,7 @@ private openPlayerMenu() {
 }
 
 private getSoundFloors(): HTMLAudioElement  {
-    return SoundManager.Effect.Floors[this._location!.getFloor(this._cursor.x, this._cursor.y)]
+    return SoundManager.SoundFloors[this._location!.getFloor(this._cursor.x, this._cursor.y)]
 }
 
 private combineItem() {
@@ -248,6 +250,8 @@ break;
 }    
 }
 
-
+private getRoomInfo() {
+    this.send(this._location!.GetRoomSummary())
+}
 
 }

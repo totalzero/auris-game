@@ -4,7 +4,7 @@ import Monster from "../std/Monster";
 import Player from "../std/Player";
 import Attack from "./Attack";
 import GameState from "./GameState";
-import SoundManager from "./SoundManager";
+import * as SoundManager from "../tools/SoundManager"
 import Speech from "./speech";
 
 export default class ControlPlayer {
@@ -132,7 +132,7 @@ private playSteps(step: number) {
     let arSteps: HTMLAudioElement[] = []
 
     for(let i = 0; i < step; i++) {
-        arSteps.push(SoundManager.Effect.Steps[i])
+        arSteps.push(SoundManager.Steps[i])
     }
     let currentStep = 0
 
