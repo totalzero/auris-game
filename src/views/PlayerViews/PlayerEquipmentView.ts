@@ -37,6 +37,7 @@ try {
             Player.Instance?.addEquipment(result as Item)
             Player.Instance?.removeEquipment(GameState.ItemToCombine)
             Player.Instance?.removeEquipment(this._options[this._menuPos].obj! as Item)
+            GameState.ItemToCombine = undefined
             this.updateEquipmentMenu()
             this.say(`otrzymujesz ${result.Name}`)
         } else {

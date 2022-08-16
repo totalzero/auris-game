@@ -10,7 +10,7 @@ Speech.say(`${attacker.Name} atakuje ${opponent.Name}`)
 const distance = Distance(attacker, opponent)
 
 const isDistance = distance <= attacker.CombatDistance
-const isHit = randomBoolean()
+
 
 const damage = function () {
 const dm = attacker.Offensive - opponent.Defensive
@@ -20,6 +20,8 @@ if (dm > 0) {
     return randomInteger(0, 1)
 }
 }()
+
+const isHit = Boolean(damage)
 
 if (isDistance) {
 if (isHit) {

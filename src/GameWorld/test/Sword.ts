@@ -6,7 +6,8 @@ export class TestSword extends Weapon {
         super()
         this.Name = "Srebrny miecz gryfona"
         this.Description = "jest to przepiękny srebrny miecz z rubinową rękojeścią, na klindze wygrawerowano napis *miecz gryfona*"
-        this.Offensive = 100
+        this.MinDamage = 50
+        this.MaxDamage = 100
         this.Value = 500
     }
 }
