@@ -18,6 +18,7 @@ constructor(view?: BaseView, messageOpenMenu: string = "") {
     super()
     this._messageOpenMenu = messageOpenMenu
     this._previousView = view
+    this.say(this._messageOpenMenu)
 }
 
  Keyboard(key: KeyboardEvent): void {

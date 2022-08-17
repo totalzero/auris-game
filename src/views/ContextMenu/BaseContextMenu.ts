@@ -10,7 +10,7 @@ export default class BaseContextMenu extends BaseMenu {
 protected _menuName: string = "Menu Obiektu"
 
  constructor(view: BaseView, obj: GameObj, menuName: string = "Menu Obiektu") {
-     super()
+     super(view, menuName)
      this._previousView = view
      this._obj = obj
      this._menuName = menuName
