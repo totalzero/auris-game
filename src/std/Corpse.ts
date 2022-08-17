@@ -7,7 +7,7 @@ export default class Corpse extends Container {
         super()
         if (obj) {
 this.Name = "Ciało " + obj.Name
-this.Add(obj.Equipment )
+this.Add(obj.Equipment)
         }
     }
 
