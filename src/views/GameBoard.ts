@@ -14,6 +14,8 @@ import GameState from "../tools/GameState";
 import Item from "../obj/Item";
 import { Cursor } from "../obj/Types";
 import { Exits } from "../obj/Exits";
+import Attack from "../tools/Attack";
+import Monster from "../std/Monster";
 
 export default class GameBoard extends BaseView {
     private _location?: Room 
@@ -103,6 +105,7 @@ ChangeView(createContextMenu(this, this._selectedObject)!)
     new ControlPlayer().Move(this._cursor.x, this._cursor.y)
     
 }
+this._selectedObject = undefined
 }
 
 private exit() {
@@ -112,6 +115,19 @@ private exit() {
  Keyboard(key: KeyboardEvent): void {
  
  switch (key.key) {
+
+case "g":
+this.Get()
+break;
+
+case "a":
+this.Attack()
+break;
+
+case "l":
+this.Look()
+break;
+
 case "x":
 this.getRoomInfo()
 break;
@@ -224,6 +240,7 @@ if (obj instanceof Item) {
 LeaveRoom(direction: "N" | "S" | "E" | "w") {
     const changeRoom = (param: Function | undefined) => {
 if (param) {
+    
 const rm = GameState.getRoom(param)
 this.send(rm.GetRoomSummary())
 Player.Instance!.Room = rm
@@ -232,18 +249,39 @@ ChangeView(new GameBoard())
     this.send("nie widzisz rzadnego wyjścia prowadzącego w tamtym kierunku.")
 }
     }
+
 switch (direction) {
     case "N":
+    if (Player.Instance!.Y == 2) {
 changeRoom(this._location?.Exits.north)        
+Player.Instance!.Y = 0
+    } else {
+        this.send("musisz podejść do północnej krawędzi")
+    }
         break;
 case "S":
+    if (Player.Instance!.Y == 0) {
 changeRoom(this._location?.Exits.south)
+Player.Instance!.Y = 2
+    } else {
+this.send("musisz podejść do południowej krawędzi")
+    }
 break;
 case "E":
+    if (Player.Instance!.X == 2) {
 changeRoom(this._location?.Exits.east)
+Player.Instance!.X = 0
+    } else {
+        this.send("musisz podejść do wschodniej krawędzi")
+    }
 break;
 case "w":
+    if (Player.Instance!.X == 0) {
 changeRoom(this._location?.Exits.west)
+Player.Instance!.X = 2
+    } else {
+        this.send("musisz podejść do zachodniej krawędzi")
+    }
 break;
     default:
         break;
@@ -252,6 +290,34 @@ break;
 
 private getRoomInfo() {
     this.send(this._location!.GetRoomSummary())
+}
+private Attack() {
+    if (this._selectedObject instanceof Monster && this.isExist(this._selectedObject)) {
+if (! Attack(Player.Instance!, this._selectedObject)) {
+    this.send("jesteś za daleko")
+}
+    } else {
+        this.send("to jest poza twoim zasięgiem")
+    }
+}
+
+private Look() {
+    if (this._selectedObject) {
+        this.send(this._selectedObject.getInfo() as string)
+    }
+}
+
+Get() {
+    if (this._selectedObject instanceof Item && this._selectedObject.canPickup && this.isExist(this._selectedObject)) {
+        (new ControlPlayer()).getItem(this._selectedObject)
+        this.send(`Podnosisz: ${this._selectedObject.Name}`)
+    } else {
+        this.send("tego nie morzesz podnieść")
+    }
+}
+
+private isExist(obj: GameObj): boolean | undefined {
+return Player.Instance!.Room?.Objects.includes(obj)
 }
 
 }

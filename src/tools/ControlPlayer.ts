@@ -59,9 +59,26 @@ private goPoint(x: number, y: number) {
 const distance = this.distanceFromPlayer(x, y)   
 
 if (this._player.ActionPoints >= distance)    {
+    
 this._player.X = x
 this._player.Y = y
 this._player.ActionPoints -= distance
+if (this._player.X < 0) {
+    this._player.X = 0
+}
+
+if (this._player.X > 3) {
+    this._player.X = 3
+}
+
+if (this._player.Y < 0) {
+    this._player.Y = 0
+}
+
+if (this._player.Y > 3) {
+    this._player.Y = 3
+}
+
 
 }
 }
