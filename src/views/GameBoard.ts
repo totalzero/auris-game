@@ -16,6 +16,7 @@ import { Cursor } from "../obj/Types";
 import { Exits } from "../obj/Exits";
 import Attack from "../tools/Attack";
 import Monster from "../std/Monster";
+import { Floors } from "../obj/Floors";
 
 export default class GameBoard extends BaseView {
     private _location?: Room 
@@ -195,15 +196,35 @@ this.cursorTab()
  }
 
 private _collectionSummary(): string {
+
+const plFloor = (fl?: Floors) => {
+switch (fl) {
+    case Floors.grass:
+        return "Trawa"
+    break;
+        
+case Floors.stone:
+return "Kamień"
+break;
+
+case Floors.water:
+return "Woda"
+break;
+    default:
+        return "ziemia"
+        break;
+}
+}
+
 let summary = ''
 if (this._objects != undefined){
 if (this._objects.length > 0) {
 summary = `
-${this._location?.getFloor(this._cursor.x, this._cursor.y)}.
+${plFloor(this._location?.getFloor(this._cursor.x, this._cursor.y))}.
 Obiekty: ${this._objects.length}`
 } else {
     summary = `
-    ${this._location?.getFloor(this._cursor.x, this._cursor.y)}.
+    ${plFloor(this._location?.getFloor(this._cursor.x, this._cursor.y))}.
 `    
 }
 }
@@ -308,12 +329,14 @@ private Look() {
 }
 
 Get() {
-    if (this._selectedObject instanceof Item && this._selectedObject.canPickup && this.isExist(this._selectedObject)) {
-        (new ControlPlayer()).getItem(this._selectedObject)
-        this.send(`Podnosisz: ${this._selectedObject.Name}`)
+    if (new ControlPlayer().getItem(this._selectedObject as Item)) {    
+    this.send(`Podnosisz: ${this._selectedObject!.Name}`)
     } else {
         this.send("tego nie morzesz podnieść")
     }
+    this._selectedObject = undefined
+    this._objects = this._location?.getObject(this._cursor.x, this._cursor.y)    
+    this._objIter = new Iterator(this._objects!)
 }
 
 private isExist(obj: GameObj): boolean | undefined {

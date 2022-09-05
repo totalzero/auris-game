@@ -31,14 +31,16 @@ GameState.startUpdate()
 
 }
 
-getItem(item: Item): boolean {
-    if (item.canPickup) {
+getItem(item?: Item): boolean {
+    if (item)
+    if (item.canPickup && this.distanceFromPlayer(item.X, item.Y) == 0 && this._player!.Room?.Objects.includes(item)) {
     this._player!.Room?.removeObject(item)
     this._player.addEquipment(item)
 return true
     } else {
         return false
     }
+    return false
 }
 
 Combat(mob: Monster): boolean  {
